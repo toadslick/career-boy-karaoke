@@ -9,12 +9,16 @@ html {
   box-sizing: border-box;
 }
 
-.kara-segment {
-  display: inline-block;
-  position: relative;
+#kara-segments-container {
   white-space: pre;
   font-size: 50px;
   font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+}
+
+.kara-segment {
+  display: inline;
+  position: relative;
 }
 
 .kara-text {

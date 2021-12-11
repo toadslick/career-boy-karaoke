@@ -1,0 +1,31 @@
+body,
+html {
+  background: #000;
+  color: #ccc;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.kara-segment {
+  display: inline-block;
+  position: relative;
+  white-space: pre;
+  font-size: 50px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.kara-text {
+  color: gray;
+}
+
+.kara-text-highlight {
+  color: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+}

@@ -47,8 +47,8 @@
   function animateSegmentGroup(group, songTime) {
     var percentTop = percentElapsed(group.start - 5, group.end + 20, songTime);
     var percentOpacity = percentElapsed(
-      group.start - 1,
-      group.end + 3,
+      group.start - 3,
+      group.end + 1,
       songTime
     );
     group.node.style.setProperty("top", 100 - percentTop * 200 + "vh");

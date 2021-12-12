@@ -348,14 +348,57 @@
         [2, "you"],
         [1, PAUSE],
       ],
+      [
+        [2.5, PAUSE],
+        [0.25, "I"],
+        [0.25, SPACE],
+        [0.25, "can"],
+        [0.25, SPACE],
+        [0.5, "never"],
+        [0.25, SPACE],
+        [0.25, "fight"],
+        [0.25, SPACE],
+        [0.25, "the"],
+        [0.25, SPACE],
+        [0.5, "feeling"],
+        [1, NEWLINE],
+        [0.25, "I"],
+        [0.25, SPACE],
+        [0.25, "stay"],
+        [0.25, SPACE],
+        [0.25, "up"],
+        [0.25, SPACE],
+        [0.5, "all"],
+        [0.25, SPACE],
+        [0.25, "night"],
+        [1, NEWLINE],
+        [0.5, "workin'"],
+        [0, SPACE],
+        [0.25, "so"],
+        [0.5, SPACE],
+        [0.25, "hard"],
+        [0.5, SPACE],
+        [0.5, "after"],
+        [0, SPACE],
+        [1, "hours"],
+        [0.5, NEWLINE],
+        [0.25, "til"],
+        [0.25, SPACE],
+        [0.25, "I"],
+        [0.25, SPACE],
+        [0.25, "see"],
+        [0.25, SPACE],
+        [0.25, "the"],
+        [0.25, SPACE],
+        [1, "sun"],
+        [0.5, "light"],
+        [1, PAUSE],
+      ],
     ],
   };
 })();
 
 /*
-
-I can never fight the feeling, I stay up all night
-Workin' so hard after hours 'til I see the sunlight
 Stuck up in the office tower, you know it's pure joy
 And that's my superpower, I'm a career boy
 Career boy (career boy)

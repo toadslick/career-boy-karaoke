@@ -1,7 +1,6 @@
 body,
 html {
-  background: #000;
-  color: #ccc;
+  background: #666;
   height: 100%;
   width: 100%;
   padding: 0;
@@ -21,9 +20,10 @@ html {
   align-items: center;
   justify-content: center;
   white-space: pre;
-  font-size: 60px;
+  font-size: 65px;
   font-family: Georgia, "Times New Roman", Times, serif;
   text-align: center;
+  font-weight: 400;
 }
 
 .kara-group {
@@ -34,17 +34,23 @@ html {
   display: block;
 }
 
+.kara-newline {
+  height: 40px;
+  overflow: hidden;
+}
+
 .kara-segment {
   display: inline-block;
   position: relative;
 }
 
 .kara-text {
-  color: gray;
+  color: rgb(70, 150, 230);
+  text-shadow: 3px 3px 10px #000;
 }
 
 .kara-text-highlight {
-  color: white;
+  color: yellow;
   position: absolute;
   left: 0;
   top: 0;

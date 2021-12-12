@@ -66,6 +66,8 @@
     segmentGroups.push(segmentGroup);
   });
 
+  console.log("GROUPS", segmentGroups);
+
   var runLoop = function (time, browser, currentFrame, frameRate) {
     var currentSongTime = currentFrame / frameRate + OFFSET;
     segmentGroups.forEach(function (group) {

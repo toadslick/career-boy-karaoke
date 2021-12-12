@@ -1,17 +1,24 @@
 (function () {
   var TEXT_CLASS_NAME = "kara-text";
   var HIGHLIGHT_CLASS_NAME = "kara-text-highlight";
-  var NEWLINE = "\n";
+  var ACTIVE_GROUP_CLASS_NAME = "kara-active";
 
   var BEAT_DURATION = 60 / window.songData.bpm;
   var OFFSET = window.songData.offset;
 
-  var segmentContainer = document.getElementById("kara-segments-container");
+  var groupContainer = document.getElementById("kara-group-container");
 
-  function createSegmentNode(text) {
-    var container = document.createElement("div");
-    container.classList.add("kara-segment");
-    container.innerHTML =
+  function creategroupNode() {
+    var node = document.createElement("div");
+    node.classList.add("kara-group");
+    groupContainer.appendChild(node);
+    return node;
+  }
+
+  function createSegmentNode(text, groupNode) {
+    var node = document.createElement("div");
+    node.classList.add("kara-segment");
+    node.innerHTML =
       "<span class='" +
       TEXT_CLASS_NAME +
       "'>" +
@@ -21,8 +28,8 @@
       "'>" +
       text +
       "</span>";
-    segmentContainer.appendChild(container);
-    return container;
+    groupNode.appendChild(node);
+    return node;
   }
 
   function animateSegmentNode(node, percent) {
@@ -30,25 +37,45 @@
   }
 
   var totalDuration = 0;
-  var segments = [];
+  var segmentGroups = [];
 
-  window.songData.lyrics.forEach(function (lyric) {
-    const endTime = totalDuration + BEAT_DURATION * lyric[0];
-    segments.push({
+  window.songData.lyrics.forEach(function (group) {
+    var segmentGroup = {
       start: totalDuration,
-      end: endTime,
-      node: createSegmentNode(lyric[1]),
+      node: creategroupNode(),
+      segments: [],
+    };
+
+    group.forEach(function (segment) {
+      var endTime = totalDuration + BEAT_DURATION * segment[0];
+      segmentGroup.segments.push({
+        start: totalDuration,
+        end: endTime,
+        node: createSegmentNode(segment[1], segmentGroup.node),
+      });
+      totalDuration = endTime;
     });
-    totalDuration = endTime;
+
+    segmentGroup.end = totalDuration;
+    segmentGroups.push(segmentGroup);
   });
 
   var runLoop = function (time, browser, currentFrame, frameRate) {
-    const currentSongTime = currentFrame / frameRate + OFFSET;
-    segments.forEach(function (segment, index) {
-      var duration = segment.end - segment.start;
-      var elapsed = currentSongTime - segment.start;
-      var percent = duration ? Math.max(0, Math.min(1, elapsed / duration)) : 0;
-      animateSegmentNode(segment.node, percent);
+    var currentSongTime = currentFrame / frameRate + OFFSET;
+    segmentGroups.forEach(function (group) {
+      if (currentSongTime > group.start && currentSongTime <= group.end) {
+        group.node.classList.add(ACTIVE_GROUP_CLASS_NAME);
+        group.segments.forEach(function (segment) {
+          var duration = segment.end - segment.start;
+          var elapsed = currentSongTime - segment.start;
+          var percent = duration
+            ? Math.max(0, Math.min(1, elapsed / duration))
+            : 0;
+          animateSegmentNode(segment.node, percent);
+        });
+      } else {
+        group.node.classList.remove(ACTIVE_GROUP_CLASS_NAME);
+      }
     });
   };
 

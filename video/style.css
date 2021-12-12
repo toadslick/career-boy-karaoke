@@ -7,13 +7,29 @@ html {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 }
 
-#kara-segments-container {
+#kara-group-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   white-space: pre;
-  font-size: 50px;
+  font-size: 60px;
   font-family: Georgia, "Times New Roman", Times, serif;
   text-align: center;
+}
+
+.kara-group {
+  height: 100vh;
+  display: none;
+}
+
+.kara-group.kara-active {
+  display: block;
 }
 
 .kara-segment {

@@ -16,9 +16,6 @@ html {
   top: 0;
   right: 0;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   white-space: pre;
   font-size: 65px;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -27,15 +24,14 @@ html {
 }
 
 .kara-group {
-  display: none;
-}
-
-.kara-group.kara-active {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .kara-newline {
-  height: 40px;
+  height: 20px;
   overflow: hidden;
 }
 

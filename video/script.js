@@ -38,24 +38,28 @@
     return node;
   }
 
-  function percentElapsed(groupOrSegment, songTime) {
-    var duration = groupOrSegment.end - groupOrSegment.start;
-    var elapsed = songTime - groupOrSegment.start;
+  function percentElapsed(start, end, songTime) {
+    var duration = end - start;
+    var elapsed = songTime - start;
     return Math.max(0, Math.min(1, elapsed / duration));
   }
 
   function animateSegmentGroup(group, songTime) {
-    var percent = percentElapsed(group, songTime);
-    if (percent > 0 && percent < 1) {
-      group.node.classList.add(ACTIVE_GROUP_CLASS_NAME);
-    } else {
-      group.node.classList.remove(ACTIVE_GROUP_CLASS_NAME);
-    }
-    // group.node.lastElementChild.style.setProperty("width", percent * 100 + "%");
+    var percentTop = percentElapsed(group.start - 5, group.end + 20, songTime);
+    var percentOpacity = percentElapsed(
+      group.start - 1,
+      group.end + 3,
+      songTime
+    );
+    group.node.style.setProperty("top", 100 - percentTop * 200 + "vh");
+    group.node.style.setProperty(
+      "opacity",
+      1 - Math.pow(Math.cos(Math.PI * percentOpacity), 30)
+    );
   }
 
   function animateSegment(segment, songTime) {
-    var percent = percentElapsed(segment, songTime);
+    var percent = percentElapsed(segment.start, segment.end, songTime);
     segment.node.lastElementChild.style.setProperty(
       "width",
       percent * 100 + "%"
@@ -90,11 +94,9 @@
     var currentSongTime = currentFrame / frameRate + OFFSET;
     segmentGroups.forEach(function (group) {
       animateSegmentGroup(group, currentSongTime);
-      if (currentSongTime > group.start && currentSongTime <= group.end) {
-        group.segments.forEach(function (segment) {
-          animateSegment(segment, currentSongTime);
-        });
-      }
+      group.segments.forEach(function (segment) {
+        animateSegment(segment, currentSongTime);
+      });
     });
   };
 

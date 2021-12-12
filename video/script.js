@@ -2,6 +2,10 @@
   var TEXT_CLASS_NAME = "kara-text";
   var HIGHLIGHT_CLASS_NAME = "kara-text-highlight";
   var ACTIVE_GROUP_CLASS_NAME = "kara-active";
+  var SEGMENT_CLASS_NAME = "kara-segment";
+  var NEWLINE_CLASS_NAME = "kara-newline";
+
+  var NEWLINE = "\n";
 
   var BEAT_DURATION = 60 / window.songData.bpm;
   var OFFSET = window.songData.offset;
@@ -17,17 +21,19 @@
 
   function createSegmentNode(text, groupNode) {
     var node = document.createElement("div");
-    node.classList.add("kara-segment");
+    node.classList.add(
+      text === NEWLINE ? NEWLINE_CLASS_NAME : SEGMENT_CLASS_NAME
+    );
     node.innerHTML =
-      "<span class='" +
+      "<div class='" +
       TEXT_CLASS_NAME +
       "'>" +
       text +
-      "</span><span class='" +
+      "</div><div class='" +
       HIGHLIGHT_CLASS_NAME +
       "'>" +
       text +
-      "</span>";
+      "</div>";
     groupNode.appendChild(node);
     return node;
   }

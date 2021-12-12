@@ -17,6 +17,9 @@ html {
   top: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   white-space: pre;
   font-size: 60px;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -24,7 +27,6 @@ html {
 }
 
 .kara-group {
-  height: 100vh;
   display: none;
 }
 
@@ -33,7 +35,7 @@ html {
 }
 
 .kara-segment {
-  display: inline;
+  display: inline-block;
   position: relative;
 }
 
@@ -46,6 +48,7 @@ html {
   position: absolute;
   left: 0;
   top: 0;
+  bottom: 0;
   overflow: hidden;
   width: 0;
 }

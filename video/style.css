@@ -26,6 +26,7 @@ html {
   bottom: 0;
   background-size: cover;
   opacity: 0;
+  background-position: center center;
 }
 
 #kara-group-container {
@@ -49,7 +50,7 @@ html {
 }
 
 .kara-newline {
-  height: 10px;
+  height: 40px;
   overflow: hidden;
 }
 

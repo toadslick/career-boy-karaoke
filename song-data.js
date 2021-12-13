@@ -5,11 +5,11 @@
 
   window.songData = {
     bpm: 120,
-    offset: 0.1,
-    images: [0, 48, 80, 111, 144, 177],
+    offset: -6,
+    images: [-10, -3, 48, 80, 111, 144, 177, 219],
     lyrics: [
       [
-        [2.5, PAUSE],
+        [2.5, "• • • "],
         [0.5, "ca"],
         [0.5, "reer"],
         [0, SPACE],

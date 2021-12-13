@@ -58,7 +58,7 @@
   }
 
   function animateSegmentGroup(group, songTime) {
-    var percentTop = percentElapsed(group.start - 10, group.end + 16, songTime);
+    var percentTop = percentElapsed(group.start - 8, group.end + 16, songTime);
     var percentOpacity = percentElapsed(
       group.start - 5,
       group.end + 2,

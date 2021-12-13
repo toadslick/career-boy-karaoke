@@ -8,3 +8,17 @@ var animate = function (n) {
   window.requestAnimationFrame(animate);
 };
 window.requestAnimationFrame(animate);
+
+var togglePause = function () {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+};
+
+window.addEventListener("keyup", function (event) {
+  if (event.key === " ") {
+    togglePause();
+  }
+});

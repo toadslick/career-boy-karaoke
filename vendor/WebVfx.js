@@ -1,119 +1,119 @@
 /*
 				=====================================================================
-				Elusien's WebVfx framework for Shotcut (http://elusien.co.uk/shotcut)
+				ELUSIEN'S WEBVFX FRAMEWORK FOR SHOTCUT (HTTP://ELUSIEN.CO.UK/SHOTCUT)
 				=====================================================================
 
-	For a full description, including documentation and examples see the above website.
+	FOR A FULL DESCRIPTION, INCLUDING DOCUMENTATION AND EXAMPLES SEE THE ABOVE WEBSITE.
 	
-	This framework enables Shotcut HTML Overlay filters to be developed quickly using a modern browser,
-	with all its development tools (e.g. using function key F12) at your disposal. Shotcut does not have any
-	such tools, other than a basic console.log, and in many cases of error you just end up with a blank screen.
+	THIS FRAMEWORK ENABLES SHOTCUT HTML OVERLAY FILTERS TO BE DEVELOPED QUICKLY USING A MODERN BROWSER,
+	WITH ALL ITS DEVELOPMENT TOOLS (E.G. USING FUNCTION KEY F12) AT YOUR DISPOSAL. SHOTCUT DOES NOT HAVE ANY
+	SUCH TOOLS, OTHER THAN A BASIC CONSOLE.LOG, AND IN MANY CASES OF ERROR YOU JUST END UP WITH A BLANK SCREEN.
 	
-	You can style the HTML elements as normal using CSS then modify the properties you want to animate
-	using this framework.
+	YOU CAN STYLE THE HTML ELEMENTS AS NORMAL USING CSS THEN MODIFY THE PROPERTIES YOU WANT TO ANIMATE
+	USING THIS FRAMEWORK.
 	
-	When you apply this filter to a clip in Shotcut, you need to tick the box that says
-	'Use WebVfx javascript extension' and confirm that you know how to use it.
+	WHEN YOU APPLY THIS FILTER TO A CLIP IN SHOTCUT, YOU NEED TO TICK THE BOX THAT SAYS
+	'USE WEBVFX JAVASCRIPT EXTENSION' AND CONFIRM THAT YOU KNOW HOW TO USE IT.
 	
-	There are 3 parts to this framework two of which are exposed to the user via HTML tag parameters:
+	THERE ARE 3 PARTS TO THIS FRAMEWORK TWO OF WHICH ARE EXPOSED TO THE USER VIA HTML TAG PARAMETERS:
 	
-	1) Animation effects:
-		This enables you to animate CSS properties for any of the HTML elements in the HTML Overlay filter.
-		It also enables the use of "keyframes" for fine control of the animation. e.g.
+	1) ANIMATION EFFECTS:
+		THIS ENABLES YOU TO ANIMATE CSS PROPERTIES FOR ANY OF THE HTML ELEMENTS IN THE HTML OVERLAY FILTER.
+		IT ALSO ENABLES THE USE OF "KEYFRAMES" FOR FINE CONTROL OF THE ANIMATION. E.G.
 				
-				a) Fadeout an element:
-					<div class='webvfx' data-animate='{0%: {opacity: 1;}, 100%: {opacity: 0%;}}'>
+				A) FADEOUT AN ELEMENT:
+					<DIV CLASS='WEBVFX' DATA-ANIMATE='{0%: {OPACITY: 1;}, 100%: {OPACITY: 0%;}}'>
 						FADING TEXT
-					</div>
-				b) Fadeout an element, then fade it back in:
-					<div class='webvfx' data-animate='{0%: {opacity: 1;}, 50%: {opacity: 0%;}, 100%: {opacity: 1;}}'>
+					</DIV>
+				B) FADEOUT AN ELEMENT, THEN FADE IT BACK IN:
+					<DIV CLASS='WEBVFX' DATA-ANIMATE='{0%: {OPACITY: 1;}, 50%: {OPACITY: 0%;}, 100%: {OPACITY: 1;}}'>
 						TEXT FADING OUT THEN BACK IN
-					</div>
-				c) Change an element's colour, move it around, change it from a square shape to a circle. 
-					<div  class='webvfx' data-animate=
-						'{start: 0.2, end: 1.0, ease: "easeOutSine",
-					       0%: {backgroundColor: #f00; left:  0px; top:  0px; borderRadius:  0%;},
-					      25%: {backgroundColor: #00f; left:100px; top:  0px; borderRadius: 50%;},
-						  50%: {backgroundColor: #0f0; left:200px; top:200px; borderRadius:  0%;},
-						  75%: {backgroundColor: #f0f; left:  0px; top:200px; borderRadius: 50%;},
-						 100%: {backgroundColor: #ff0; left:100px; top:  0px; borderRadius:  0%;}
+					</DIV>
+				C) CHANGE AN ELEMENT'S COLOUR, MOVE IT AROUND, CHANGE IT FROM A SQUARE SHAPE TO A CIRCLE. 
+					<DIV  CLASS='WEBVFX' DATA-ANIMATE=
+						'{START: 0.2, END: 1.0, EASE: "EASEOUTSINE",
+					       0%: {BACKGROUNDCOLOR: #F00; LEFT:  0PX; TOP:  0PX; BORDERRADIUS:  0%;},
+					      25%: {BACKGROUNDCOLOR: #00F; LEFT:100PX; TOP:  0PX; BORDERRADIUS: 50%;},
+						  50%: {BACKGROUNDCOLOR: #0F0; LEFT:200PX; TOP:200PX; BORDERRADIUS:  0%;},
+						  75%: {BACKGROUNDCOLOR: #F0F; LEFT:  0PX; TOP:200PX; BORDERRADIUS: 50%;},
+						 100%: {BACKGROUNDCOLOR: #FF0; LEFT:100PX; TOP:  0PX; BORDERRADIUS:  0%;}
 					   }'>
 						HI
-					</div>
+					</DIV>
 
-	2) Stopwatch effects:
-		This enables you to have 1 or more stopwatches in the HTML Overlay filter. It also enables the
-		use of "keyframes" for fine control of the stopwatches.
+	2) STOPWATCH EFFECTS:
+		THIS ENABLES YOU TO HAVE 1 OR MORE STOPWATCHES IN THE HTML OVERLAY FILTER. IT ALSO ENABLES THE
+		USE OF "KEYFRAMES" FOR FINE CONTROL OF THE STOPWATCHES.
 		
-		A stopwatch consists of 4 elements specified using HTML '<span></span>' tags.
-		<span> number 1 is the frame       number;
-		<span> number 2 is the hour        number;
-		<span> number 3 is the minute      number;
-		<span> number 4 is the millisecond number
+		A STOPWATCH CONSISTS OF 4 ELEMENTS SPECIFIED USING HTML '<SPAN></SPAN>' TAGS.
+		<SPAN> NUMBER 1 IS THE FRAME       NUMBER;
+		<SPAN> NUMBER 2 IS THE HOUR        NUMBER;
+		<SPAN> NUMBER 3 IS THE MINUTE      NUMBER;
+		<SPAN> NUMBER 4 IS THE MILLISECOND NUMBER
 		
-		Normally you would initialise each of the <span> elements by placing a zero (0) in it. Placing any
-		other number will initialise it to that value. Leaving the <span> empty will hide it (see examples). e.g.
+		NORMALLY YOU WOULD INITIALISE EACH OF THE <SPAN> ELEMENTS BY PLACING A ZERO (0) IN IT. PLACING ANY
+		OTHER NUMBER WILL INITIALISE IT TO THAT VALUE. LEAVING THE <SPAN> EMPTY WILL HIDE IT (SEE EXAMPLES). E.G.
 		
-				a) Stopwatch showing frame-number, minutes and seconds:
-					<div class="webvfx"	 data-stopwatch=''>
-						Frame <span>0</span> => <span></span><span>00</span>m <span>00</span>s <span></span>
-					</div>
+				A) STOPWATCH SHOWING FRAME-NUMBER, MINUTES AND SECONDS:
+					<DIV CLASS="WEBVFX"	 DATA-STOPWATCH=''>
+						FRAME <SPAN>0</SPAN> => <SPAN></SPAN><SPAN>00</SPAN>M <SPAN>00</SPAN>S <SPAN></SPAN>
+					</DIV>
 					
-				b) Stopwatch showing minutes and seconds, running for 120 seconds with various pauses and resumes:
+				B) STOPWATCH SHOWING MINUTES AND SECONDS, RUNNING FOR 120 SECONDS WITH VARIOUS PAUSES AND RESUMES:
 				
-					<div class="webvfx"	data-control='120:24' data-stopwatch=
-						'{10%: {pause;},
-						  20%: {resume;},
-						  40%: {pause;},
-						  60%: {resume: skip;},
-						  80%: {pause;},
-						  90%: {resume: 60000;}
+					<DIV CLASS="WEBVFX"	DATA-CONTROL='120:24' DATA-STOPWATCH=
+						'{10%: {PAUSE;},
+						  20%: {RESUME;},
+						  40%: {PAUSE;},
+						  60%: {RESUME: SKIP;},
+						  80%: {PAUSE;},
+						  90%: {RESUME: 60000;}
 						 }'>
-						<span></span></span><span></span><span>00</span>m <span>00</span>s <span></span>
-					</div>
+						<SPAN></SPAN></SPAN><SPAN></SPAN><SPAN>00</SPAN>M <SPAN>00</SPAN>S <SPAN></SPAN>
+					</DIV>
 	
-	3) User-supplied effects:
-		This enables you to provide your own javascript function to do something to the HTML. This function
-		will be called for each frame with the parameters:
-			time: 		  the "normalised time" of this frame (0.0 to 1.0);
-			frame_number: the number of this frame
-			frame_rate  : the frame-rate in frames per second
+	3) USER-SUPPLIED EFFECTS:
+		THIS ENABLES YOU TO PROVIDE YOUR OWN JAVASCRIPT FUNCTION TO DO SOMETHING TO THE HTML. THIS FUNCTION
+		WILL BE CALLED FOR EACH FRAME WITH THE PARAMETERS:
+			TIME: 		  THE "NORMALISED TIME" OF THIS FRAME (0.0 TO 1.0);
+			FRAME_NUMBER: THE NUMBER OF THIS FRAME
+			FRAME_RATE  : THE FRAME-RATE IN FRAMES PER SECOND
 		
-		To do this you need to create the javascript function, then add it to a GLOBAL-scope array called
-		"webvfx_add_to_frame" e.g.
+		TO DO THIS YOU NEED TO CREATE THE JAVASCRIPT FUNCTION, THEN ADD IT TO A GLOBAL-SCOPE ARRAY CALLED
+		"WEBVFX_ADD_TO_FRAME" E.G.
 		
-		<script>
-			function flash(time, frame_number, frame_rate) {
-				bulb = document.getElementById("bulb");
-					bulb.style.opacity = ((frame_number % 10) < 5) ? 0.1 : 1.0;
+		<SCRIPT>
+			FUNCTION FLASH(TIME, FRAME_NUMBER, FRAME_RATE) {
+				BULB = DOCUMENT.GETELEMENTBYID("BULB");
+					BULB.STYLE.OPACITY = ((FRAME_NUMBER % 10) < 5) ? 0.1 : 1.0;
 			}
-			webvfx_add_to_frame = [flash];
-		<script>
+			WEBVFX_ADD_TO_FRAME = [FLASH];
+		<SCRIPT>
 			
- * The Creative Commons Attribution-ShareAlike 4.0 International Licence (CC BY-SA 4.0)
- * See https://creativecommons.org/licenses/by-sa/4.0/
+ * THE CREATIVE COMMONS ATTRIBUTION-SHAREALIKE 4.0 INTERNATIONAL LICENCE (CC BY-SA 4.0)
+ * SEE HTTPS://CREATIVECOMMONS.ORG/LICENSES/BY-SA/4.0/
  *
- * Copyright (c) 2018 - Elusien Entertainment
+ * COPYRIGHT (C) 2018 - ELUSIEN ENTERTAINMENT
  *
- * Attribution — You must give appropriate credit, provide a link to the license,
- * and indicate if changes were made. You may do so in any reasonable manner,
- * but not in any way that suggests the licensor endorses you or your use.
+ * ATTRIBUTION — YOU MUST GIVE APPROPRIATE CREDIT, PROVIDE A LINK TO THE LICENSE,
+ * AND INDICATE IF CHANGES WERE MADE. YOU MAY DO SO IN ANY REASONABLE MANNER,
+ * BUT NOT IN ANY WAY THAT SUGGESTS THE LICENSOR ENDORSES YOU OR YOUR USE.
  *
- * ShareAlike — If you remix, transform, or build upon the material, you must distribute
- * your contributions under the same license as the original.
+ * SHAREALIKE — IF YOU REMIX, TRANSFORM, OR BUILD UPON THE MATERIAL, YOU MUST DISTRIBUTE
+ * YOUR CONTRIBUTIONS UNDER THE SAME LICENSE AS THE ORIGINAL.
  *
- * No additional restrictions — You may not apply legal terms or technological measures
- * that legally restrict others from doing anything the license permits.
+ * NO ADDITIONAL RESTRICTIONS — YOU MAY NOT APPLY LEGAL TERMS OR TECHNOLOGICAL MEASURES
+ * THAT LEGALLY RESTRICT OTHERS FROM DOING ANYTHING THE LICENSE PERMITS.
  *
- * Notices:
- * You do not have to comply with the license for elements of the material in the public domain
- * or where your use is permitted by an applicable exception or limitation.
- * No warranties are given. The license may not give you all of the permissions necessary
- * for your intended use. For example, other rights such as publicity, privacy, or moral rights
- * may limit how you use the material.
+ * NOTICES:
+ * YOU DO NOT HAVE TO COMPLY WITH THE LICENSE FOR ELEMENTS OF THE MATERIAL IN THE PUBLIC DOMAIN
+ * OR WHERE YOUR USE IS PERMITTED BY AN APPLICABLE EXCEPTION OR LIMITATION.
+ * NO WARRANTIES ARE GIVEN. THE LICENSE MAY NOT GIVE YOU ALL OF THE PERMISSIONS NECESSARY
+ * FOR YOUR INTENDED USE. FOR EXAMPLE, OTHER RIGHTS SUCH AS PUBLICITY, PRIVACY, OR MORAL RIGHTS
+ * MAY LIMIT HOW YOU USE THE MATERIAL.
  * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
+ * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN
+ * ALL COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -123,8 +123,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @version 1.8
-
+ * @VERSION 1.16
 */
 	var Elusien = {
 		iter        : 0,
@@ -184,33 +183,101 @@
       http://www.amazon.com/exec/obidos/ASIN/0072223561/robertpennerc-20
     */
 
-        this.linearTween    = function (t, b, c, d) {return  c *  t/d                         + b;};
-        this.easeInQuad     = function (t, b, c, d) {return  c * (t/=d)         *t            + b;};
-        this.easeOutQuad    = function (t, b, c, d) {return -c * (t/=d)         *(t-2)        + b;};
-        this.easeInOutQuad  = function (t, b, c, d) {return ((t/=d/2) < 1) ? c/2*t*t          + b : -c/2*((--t)*(t-2)    - 1) + b;};
-        this.easeInCubic    = function (t, b, c, d) {return c *  (t/=d)         *t*t          + b;};
-        this.easeOutCubic   = function (t, b, c, d) {return c * ((t=t/d-1)      *t*t + 1)     + b;};
-        this.easeInOutCubic = function (t, b, c, d) {return ((t/=d/2) < 1) ? c/2*t*t*t        + b :  c/2*((t-=2)*t*t     + 2) + b;};
-        this.easeInQuart    = function (t, b, c, d) {return  c *  (t/=d)        *t*t*t        + b;};
-        this.easeOutQuart   = function (t, b, c, d) {return -c * ((t=t/d-1)     *t*t*t - 1)   + b;};
-        this.easeInOutQuart = function (t, b, c, d) {return ((t/=d/2) < 1) ? c/2*t*t*t*t      + b : -c/2*((t-=2)*t*t*t   - 2) + b;};
-        this.easeInQuint    = function (t, b, c, d) {return  c * (t/=d)         *t*t*t*t      + b;};
-        this.easeOutQuint   = function (t, b, c, d) {return  c * ((t=t/d-1)     *t*t*t*t + 1) + b;};
-        this.easeInOutQuint = function (t, b, c, d) {return ((t/=d/2) < 1) ? c/2*t*t*t*t*t    + b :  c/2*((t-=2)*t*t*t*t + 2) + b;};
-        this.easeInSine     = function (t, b, c, d) {return -c   *  Math.cos(t/d * (Math.PI/2)) + c + b;};
-        this.easeOutSine    = function (t, b, c, d) {return  c   *  Math.sin(t/d * (Math.PI/2))     + b;};
-        this.easeInOutSine  = function (t, b, c, d) {return -c/2 * (Math.cos(t/d *  Math.PI) - 1)   + b;};
-        this.easeInExpo     = function (t, b, c, d) {return (t===0) ? b   : c *   Math.pow(2, 10 * (t/d - 1)) + b;};
-        this.easeOutExpo    = function (t, b, c, d) {return (t==d)  ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;};
-        this.easeInOutExpo  = function (t, b, c, d) {return (t===0) ? b   : ((t==d) ? b+c : (((t/=d/2) < 1) ? c/2 * Math.pow(2, 10 * (t - 1)) + b : c/2*(-Math.pow(2, -10 * --t) + 2) + b));};
-        this.easeInCirc     = function (t, b, c, d) {return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;};
-        this.easeOutCirc    = function (t, b, c, d) {return  c *  Math.sqrt(1 - (t=t/d-1)*t)   + b;};
-        this.easeInOutCirc  = function (t, b, c, d) {return ((t/=d/2) < 1) ? -c/2 * (Math.sqrt(1 - t*t) - 1) + b : c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;};
-		this.easeInBounce   = function (t, b, c, d) {return (t===0) ? b :  (((t/=d)   == 1) ? b + c :                -(c * Math.pow(2,  10 * (t -= 1)) * Math.sin((t * d - (d*0.3    /4)) * (2 * Math.PI) / (d*0.3    )))           + b);};
-		this.easeOutBounce  = function (t, b, c, d) {return (t===0) ? b :  (((t/=d/2) == 2) ? b + c :                 (c * Math.pow(2, -10 *  t      ) * Math.sin((t * d - (d*0.3    /4)) * (2 * Math.PI) / (d*0.3    )))       + c + b);};
-        this.easeInOutBounce= function (t, b, c, d) {return (t===0) ? b :  (((t/=d/2) == 2) ? b + c : ((t<1) ? -0.5 * (c * Math.pow(2,  10 * (t -= 1)) * Math.sin((t * d - (d*0.3*1.5/4)) * (2 * Math.PI) / (d*0.3*1.5)))           + b :
-																											          (c * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - (d*0.3*1.5/4)) * (2 * Math.PI) / (d*0.3*1.5))) * 0.5 + c + b));};
+			this.linearTween    = function (t, b, c, d) {return  c *  t/d                         + b;};
+			this.easeInQuad     = function (t, b, c, d) {return  c * (t/=d)         *t            + b;};
+			this.easeOutQuad    = function (t, b, c, d) {return -c * (t/=d)         *(t-2)        + b;};
+			this.easeInOutQuad  = function (t, b, c, d) {return ((t/=d/2) < 1) ? c/2*t*t          + b : -c/2*((--t)*(t-2)    - 1) + b;};
+			this.easeInCubic    = function (t, b, c, d) {return c *  (t/=d)         *t*t          + b;};
+			this.easeOutCubic   = function (t, b, c, d) {return c * ((t=t/d-1)      *t*t + 1)     + b;};
+			this.easeInOutCubic = function (t, b, c, d) {return ((t/=d/2) < 1) ? c/2*t*t*t        + b :  c/2*((t-=2)*t*t     + 2) + b;};
+			this.easeInQuart    = function (t, b, c, d) {return  c *  (t/=d)        *t*t*t        + b;};
+			this.easeOutQuart   = function (t, b, c, d) {return -c * ((t=t/d-1)     *t*t*t - 1)   + b;};
+			this.easeInOutQuart = function (t, b, c, d) {return ((t/=d/2) < 1) ? c/2*t*t*t*t      + b : -c/2*((t-=2)*t*t*t   - 2) + b;};
+			this.easeInQuint    = function (t, b, c, d) {return  c * (t/=d)         *t*t*t*t      + b;};
+			this.easeOutQuint   = function (t, b, c, d) {return  c * ((t=t/d-1)     *t*t*t*t + 1) + b;};
+			this.easeInOutQuint = function (t, b, c, d) {return ((t/=d/2) < 1) ? c/2*t*t*t*t*t    + b :  c/2*((t-=2)*t*t*t*t + 2) + b;};
+			this.easeInSine     = function (t, b, c, d) {return -c   *  Math.cos(t/d * (Math.PI/2)) + c + b;};
+			this.easeOutSine    = function (t, b, c, d) {return  c   *  Math.sin(t/d * (Math.PI/2))     + b;};
+			this.easeInOutSine  = function (t, b, c, d) {return -c/2 * (Math.cos(t/d *  Math.PI) - 1)   + b;};
+			this.easeInExpo     = function (t, b, c, d) {return (t===0) ? b   : c *   Math.pow(2, 10 * (t/d - 1)) + b;};
+			this.easeOutExpo    = function (t, b, c, d) {return (t==d)  ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;};
+			this.easeInOutExpo  = function (t, b, c, d) {return (t===0) ? b   : ((t==d) ? b+c : (((t/=d/2) < 1) ? c/2 * Math.pow(2, 10 * (t - 1)) + b : c/2*(-Math.pow(2, -10 * --t) + 2) + b));};
+			this.easeInCirc     = function (t, b, c, d) {return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;};
+			this.easeOutCirc    = function (t, b, c, d) {return  c *  Math.sqrt(1 - (t=t/d-1)*t)   + b;};
+			this.easeInOutCirc  = function (t, b, c, d) {return ((t/=d/2) < 1) ? -c/2 * (Math.sqrt(1 - t*t) - 1) + b : c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;};
+			this.easeInBounce   = function (t, b, c, d) {return (t===0) ? b :  (((t/=d)   == 1) ? b + c :                -(c * Math.pow(2,  10 * (t -= 1)) * Math.sin((t * d - (d*0.3    /4)) * (2 * Math.PI) / (d*0.3    )))           + b);};
+			this.easeOutBounce  = function (t, b, c, d) {return (t===0) ? b :  (((t/=d/2) == 2) ? b + c :                 (c * Math.pow(2, -10 *  t      ) * Math.sin((t * d - (d*0.3    /4)) * (2 * Math.PI) / (d*0.3    )))       + c + b);};
+			this.easeInOutBounce= function (t, b, c, d) {return (t===0) ? b :  (((t/=d/2) == 2) ? b + c : ((t<1) ? -0.5 * (c * Math.pow(2,  10 * (t -= 1)) * Math.sin((t * d - (d*0.3*1.5/4)) * (2 * Math.PI) / (d*0.3*1.5)))           + b :
+																															(c * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - (d*0.3*1.5/4)) * (2 * Math.PI) / (d*0.3*1.5))) * 0.5 + c + b));};
     }      // #################### END OF Easing_Funs CONSTRUCTOR ####################
+
+
+/**
+ * Behaves the same as setTimeout except uses requestAnimationFrame() where possible for better performance
+ * @param {function} fn The callback function
+ * @param {int} delay The delay in milliseconds
+ */
+
+window.requestTimeout = function(fn, delay) {
+	var start = new Date().getTime(),
+		handle = {};
+		
+	function loop(){
+		var current = new Date().getTime(),
+			delta = current - start;
+			
+		if (delta >= delay) {
+			fn.call();	
+		} else {
+			handle.value = requestAnimFrame(loop);
+		}
+	}
+	
+	handle.value = requestAnimFrame(loop);
+	return handle;
+};
+
+/**
+ * Behaves the same as clearTimeout except uses cancelRequestAnimationFrame() where possible for better performance
+ * @param {int|object} fn The callback function
+ */
+window.clearRequestTimeout = function(handle) {
+    window.cancelAnimationFrame(handle.value);
+};
+/**
+ * Behaves the same as setInterval except uses requestAnimationFrame() where possible for better performance
+ * @param {function} fn The callback function
+ * @param {int} delay The delay in milliseconds
+ */
+window.requestInterval = function(fn, delay) {
+			
+	var start = new Date().getTime(),
+		handle = {};
+		
+	function loop() {
+		var current = new Date().getTime(),
+			delta = current - start;
+			
+		if(delta >= delay) {
+			fn.call();
+			start = new Date().getTime();
+		}
+
+		handle.value = requestAnimFrame(loop);
+	}
+	
+	handle.value = requestAnimFrame(loop);
+	return handle;
+};
+
+/**
+ * Behaves the same as clearInterval except uses cancelRequestAnimationFrame() where possible for better performance
+ * @param {int|object} fn The callback function
+ */
+    window.clearRequestInterval = function(handle) {
+    window.cancelAnimationFrame(handle.value);
+};
+
 
 // ######################### parse SRT/VTT subtitle files ###########################
 
@@ -279,7 +346,7 @@
 
 //console.log(cues);
         return cues;
-    };
+    }
 
 // ##################################### END OF SUBTITLE PARSING ################################
 
@@ -429,7 +496,6 @@
 		var to     = {};
 
 		Elusien.frame_length = t / (++Elusien.frame_number);
-
 		if (typeof webvfx_add_to_frame !=='undefined') {for (i = 0; i < webvfx_add_to_frame.length; i++) {webvfx_add_to_frame[i](time, this.params.browser, Elusien.frame_number, Elusien.frame_rate);}}
 
         for (var param in this.params) {
@@ -505,18 +571,46 @@
 				run_slideshow (this.params[param].slideshow , this.params[param].ss_params, time, Elusien.frame_number, Elusien.frame_rate);
 			} else if (typeof  this.params[param].explosion  != "undefined"){
 				run_explosion (this.params[param].explosion , this.params[param].ex_params, time, Elusien.frame_number, Elusien.frame_rate);
+			} else if (typeof  this.params[param].rolling    != "undefined"){
+				run_rolling   (this.params[param].rolling   , this.params[param].rl_params, time, Elusien.frame_number, Elusien.frame_rate);
 			} else if (typeof  this.params[param].fragment   != "undefined"){
 				run_fragment  (this.params[param].fragment  , this.params[param].fg_params, time, Elusien.frame_number, Elusien.frame_rate);
 			} else if (typeof  this.params[param].subtitle   != "undefined"){
 				run_subtitle  (this.params[param].subtitle  , this.params[param].st_params, time, Elusien.frame_number, Elusien.frame_rate);
 			} else if (typeof  this.params[param].typewrite  != "undefined"){
 				run_typewriter(this.params[param].typewriter, this.params[param].tw_params, time, Elusien.frame_number, Elusien.frame_rate);
+			} else if (typeof  this.params[param].ntypewrite != "undefined"){
+			   run_ntypewriter(this.params[param].ntypewriter, this.params[param].nt_params, time, Elusien.frame_number, Elusien.frame_rate);
+			} else if (typeof  this.params[param].credits    != "undefined"){
+				run_credits   (this.params[param].credits,    this.params[param].vc_params, time, Elusien.frame_number, Elusien.frame_rate);
 			}
 
         }
     };      // #################### END OF render ####################
 
-    function typewriter_to_JSON_string(data_slideshow) {
+
+    function credits_to_JSON_string(data_credits) {
+/*
+        ==============================================================================================================
+        Description
+        -----------
+        This function is called once to create the JSON string from the user's credits request..
+        
+        Parameters          Description
+        ----------          -----------
+        data_credits    The string the user provided on the "data-credits" attribute in the HTML.                           
+        ==============================================================================================================
+*/
+        return data_credits.replace(                  /\n/g, ' ')
+													 .replace(                /(['"])/g, '')
+                           .replace(                /\s+:/g, ': ')
+                           .replace(              /\s{2,}/g, ' ')
+													 .replace(      /([a-z0-9_.]+):/ig, '"$1":')
+													 .replace(        /:\s*([^:},\s}]*)\s*,{0,1}/g, ':"$1",')
+													 .replace(            /[;,]\s*}/g, '}');
+	}
+	
+    function typewriter_to_JSON_string(data_typewriter) {
 /*
         ==============================================================================================================
         Description
@@ -525,10 +619,10 @@
         
         Parameters          Description
         ----------          -----------
-        data_animate        The string the user provided on the "data-typewriter" attribute in the HTML.                           
+        data_typewriter    The string the user provided on the "data-typewriter" attribute in the HTML.                           
         ==============================================================================================================
 */
-        return data_slideshow.replace(                  /\n/g, ' ')
+        return data_typewriter.replace(                  /\n/g, ' ')
 							 .replace(                /(['"])/g, '')
                              .replace(                /\s+:/g, ': ')
                              .replace(              /\s{2,}/g, ' ')
@@ -537,6 +631,26 @@
 						     .replace(            /[;,]\s*}/g, '}');
 	}
 	
+    function ntypewriter_to_JSON_string(data_ntypewriter) {
+/*
+        ==============================================================================================================
+        Description
+        -----------
+        This function is called once to create the JSON string from the user's typewriter request..
+        
+        Parameters          Description
+        ----------          -----------
+        data_ntypewriter    The string the user provided on the "data-typewriter" attribute in the HTML.                           
+        ==============================================================================================================
+*/
+        return data_ntypewriter.replace(                  /\n/g, ' ')
+							 .replace(                /(['"])/g, '')
+                             .replace(                /\s+:/g, ': ')
+                             .replace(              /\s{2,}/g, ' ')
+						     .replace(      /([a-z0-9_.]+):/ig, '"$1":')
+						     .replace(        /:\s*([^:},\s}]*)\s*,{0,1}/g, ':"$1",')
+						     .replace(            /[;,]\s*}/g, '}');
+	}
 
     function slideshow_to_JSON_string(data_slideshow) {
 /*
@@ -607,6 +721,31 @@
 						     .replace(            /[;,]\s*}/g, '}');					// Remove last ',' or ';' before a '}'
 	}
 	
+    function rolling_to_JSON_string(data_rolling) {
+/*
+        ==============================================================================================================
+        Description
+        -----------
+        This function is called once to create the JSON string from the user's rolling request..
+        
+        Parameters          Description
+        ----------          -----------
+        data_rolling        The string the user provided on the "data-roll" attribute in the HTML.                           
+        ==============================================================================================================
+*/
+        return data_rolling.replace(                  /\n/g, ' ')						// Replace newline by space
+							 .replace(                /(['"])/g, '')					// Remove quotes
+                             .replace(                /\s+:/g, ': ')					// Remove spaces before ':' and append a space
+                             .replace(              /\s{2,}/g, ' ')						// replace multiple spaces by a single space
+                             .replace(    /(\d\d\d)(.\d*){0,1}%:/g, '$1$2:')			// These 3 lines convert keyframes to
+						     .replace(  /(\D)(\d\d)(.\d*){0,1}%:/g, '$10$2$3:')			// 	numbers such as:
+						     .replace(  /(\D\D)(\d)(.\d*){0,1}%:/g, '$100$2$3:')		//		050.1276 (get rid of '%')
+						     .replace(  /(\d\d\d)(.\d*){0,1}:\s+([a-z]*)/g, '$1$2: $3')	// Add a space after the keyframe
+						     .replace(      /([a-z0-9_.]+):/ig, '"$1":')				// Put double-quotes around property names
+						     .replace(        /:\s*([^:}," ]*)\s*/g, ': "$1"')			// Put double-quotes around property values
+						     .replace(            /[;,]\s*}/g, '}');					// Remove last ',' or ';' before a '}'
+	}
+	
     function fragment_to_JSON_string(data_fragment) {
 /*
         ==============================================================================================================
@@ -658,7 +797,13 @@
 						     .replace(               /[;,]\s*}/g, '}');
 	}
 
-			
+	function HTML_entity(chars, pos) {
+		var str = chars.slice(pos,  pos + Math.min(8, (chars.length-pos+1))).join('');
+if (chars[pos] == '&') {console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@' + str);}
+		var ret = str.replace(/^(&.{1,8};)(.*)/, '$1');
+if (chars[pos] == '&') {console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@' + ret);}
+		return ret;
+	}	
 	function format_explosion_data(explosion, ex_params){
 
 //			explosion_data.element  is explosions[ex];
@@ -675,13 +820,26 @@
 		var ymax     =  mfact * height;
 		var spantext = [];
 		var tag      = false;
+		var entity   = false;
 		
 		for (var i=0; i<chars.length; i++) {
 			if (chars[i] == '<') {
 				tag = true;
 			}
 			if (!tag) {	// A single space is ignored in an inline-block, so convert it to a non-breaking space instead.
-				spantext.push('<span class="e_x_p_l_o_d_e">', (chars[i] != ' ' ? chars[i] : '&nbsp'), '</span>');
+// Check for an HTML etity (e,g, &amp; &lt; etc...)
+				if (chars[i] == '&') {
+					entity = HTML_entity(chars, i);
+				}
+				if (entity) {
+				  spantext.push('<span class="e_x_p_l_o_d_e">', entity, '</span>');
+				  i += entity.length - 1;
+				  entity = false;
+					
+				} else {
+				  spantext.push('<span class="e_x_p_l_o_d_e">', (chars[i] != ' ' ? chars[i] : '&nbsp;'), '</span>');
+					
+				}
 			} else {
 				spantext.push(chars[i]);			
 			}
@@ -709,6 +867,87 @@
 	}
 
 			
+	function format_rolling_data(rolling, rl_params){
+
+//			rolling_data.element  is explosions[ex];
+//			rolling_data.sequence is explode[ex];
+//			rolling_data.spans becomes the span elements, which are the individual characters of the text.
+
+
+/*
+ *	https://codepen.io/kh-mamun/pen/NdwZdW
+*/
+
+		var chars    = rolling.innerHTML.trim().split('');
+		var spantext = [];
+		var tag      = false;
+		var entity   = false;
+
+//console.log(rolling);
+//console.log(chars);
+		for (var i=0; i<chars.length; i++) {
+			if (chars[i] == '<') {
+				tag = true;
+			}
+			if (!tag) {	// A single space is ignored in an inline-block, so convert it to a non-breaking space instead.
+// Check for an HTML etity (e,g, &amp; &lt; etc...)
+				if (chars[i] == '&') {
+					entity = HTML_entity(chars, i);
+				}
+				if (entity) {
+				  spantext.push('<span class="f_l_o_w" style="text-decoration: inherit">', entity, '</span>');
+				  i += entity.length - 1;
+				  entity = false;
+				} else {
+				  spantext.push('<span class="f_l_o_w" style="text-decoration: inherit">', (chars[i] != ' ' ? chars[i] : '&nbsp;'), '</span>');
+					
+				}
+			} else {
+				spantext.push(chars[i]);			
+			}
+			if (chars[i] == '>') {
+				tag = false;
+			}
+		}
+		rl_params.originalHTML = rolling.innerHTML;
+		rolling.innerHTML = spantext.join('');
+		rl_params.spans     = rolling.getElementsByClassName('f_l_o_w');
+//console.log('rl_params.begin=', rl_params.begin, ', rl_params.state=', rl_params.state, 'rl_params.trans_end=', rl_params.trans_end);					
+//console.log(JSON.stringify(rl_params, null, 4));
+//console.log(rolling);
+			rl_params.xform = [];
+		for (i = 0; i < rl_params.spans.length; i++)  {
+			rl_params.xform[i]         = new Xform(0);
+			
+			rl_params.coords[i]        = new Coords(rl_params.animparams[0].translate[0],
+																							rl_params.animparams[0].translate[1],
+																							rl_params.animparams[0].scale,
+																							i / rl_params.spans.length,
+																							rl_params.animparams[0].opacity,
+																							rl_params.animparams[0].rotate
+																						 ); // Initial (flow) or final (roll) translate (x, y)
+			
+			rl_params.coords[i].k       = 0;																		// This keyframe
+			rl_params.coords[i].p       = rl_params.animparams[0].pcnt/100;     // THIS keyframe's percent (as a decimal 0 to 1)
+			rl_params.coords[i].np      = rl_params.animparams[1].pcnt/100;			// the NEXT keyframe's percent (as a decimal 0 to 1)
+			rl_params.coords[i].nx      = rl_params.animparams[1].translate[0];
+			rl_params.coords[i].ny      = rl_params.animparams[1].translate[1];
+			rl_params.coords[i].nz      = rl_params.animparams[1].scale;
+			rl_params.coords[i].no      = rl_params.animparams[1].opacity;
+			rl_params.coords[i].nr      = rl_params.animparams[1].rotate;
+			
+			rl_params.styles[i]         = rl_params.spans[i].style;
+			rl_params.styles[i].display = 'inline-block';
+			rl_params.styles[i].margin  = 0;
+			rl_params.styles[i].padding = 0;
+			rl_params.styles[i].border  = 0;
+			rl_params.styles[i].opacity = (rl_params.roll.begin == 'visible') ? 1.0 : 0.0;
+		}
+//console.log(rl_params);
+
+		return;
+	}
+			
 	function format_typewriter_data(typewriter, tw_params){
 
 //			typewriter_data.element  is typewriters[tw];
@@ -718,12 +957,24 @@
 		var chars    = typewriter.innerHTML.split('');
 		var spantext = [];
 		var tag      = false;
-
+		var entity   = false;
+			
 		for (var i=0; i<chars.length; i++) {
 			if (chars[i].charCodeAt(0) < 32) { continue; }
 			if (chars[i] == '<') { tag = true; }
 			if (!tag) {	// A single space is ignored in an inline-block, so convert it to a non-breaking space instead.
-				spantext.push('<span class="_typewriter_">', (chars[i] != ' ' ? chars[i] : '&nbsp;'), '</span>');
+// Check for an HTML etity (e,g, &amp; &lt; etc...)
+				if (chars[i] == '&') {
+					entity = HTML_entity(chars, i);
+				}
+				if (entity) {
+				  spantext.push('<span class="f_l_o_w" style="text-decoration: inherit">', entity, '</span>');
+				  i += entity.length - 1;
+				  entity = false;
+				} else {
+				  spantext.push('<span class="_typewriter_">', (chars[i] != ' ' ? chars[i] : '&nbsp;'), '</span>');
+					
+				}
 			} else {
 				spantext.push(chars[i]);			
 			}
@@ -751,6 +1002,84 @@
 		tw_params.spans[0].innerHTML  = '&nbsp;';
 		tw_params.inc                 = (tw_params.typewrite.end - tw_params.typewrite.start) / (tw_params.spans.length + tw_params.typewrite.stx + tw_params.typewrite.etx);
 		
+		return;
+	}
+			
+	function format_ntypewriter_data(ntypewriter, nt_params){
+
+//			typewriter_data.element  is typewriters[tw];
+//			typewriter_data.sequence is typewrite[tw];
+//			typewriter_data.spans becomes the span elements, which are the individual characters of the text.
+
+		var chars = ntypewriter.innerHTML.split('');
+		nt_params.spantext = [];
+		var spantext = nt_params.spantext;
+		var tag      = false;
+		var entity   = false;
+		var character= '';
+
+		nt_params.element = ntypewriter;
+		for (var i=0; i<chars.length; i++) {
+			if (chars[i].charCodeAt(0) < 32) { continue; }
+			if (chars[i] == '<') { tag = true; }
+			if (!tag) {	// A single space is ignored in an inline-block, so convert it to a non-breaking space instead.
+// Check for an HTML etity (e,g, &amp; &lt; etc...)
+				if (chars[i] == '&') {
+					entity = HTML_entity(chars, i);
+				}
+				if (entity) {
+				  spantext.push(entity);
+				  i += entity.length - 1;
+				  entity = false;
+				} else {
+				  spantext.push((chars[i] != ' ' ? chars[i] : '&nbsp;'));
+				}
+			} else {
+				character += chars[i];
+			}
+			if (chars[i] == '>') {
+				tag = false;
+				spantext.push(character);
+				character = '';
+			}
+		}
+console.log('@@@@@@@@@@@@@@ spans-', spantext);
+//		ntypewriter.innerHTML = spantext.join('');
+		nt_params.spans       = ntypewriter.getElementsByClassName('_ntypewriter_');
+//console.log(nt_params);
+		for (i = 0; i < nt_params.spans.length; i++)  {
+			nt_params.cstyle[i]                       = window.getComputedStyle(nt_params.spans[i], null);
+			if (i === 0) { nt_params.borderLeftColor = nt_params.cstyle[0].borderLeftColor; }
+			nt_params.style[i]                   = nt_params.spans[i].style;
+			nt_params.style[i].display           = 'inline-block';
+			nt_params.style[i].visibility        = 'hidden';
+			nt_params.style[i].borderRightColor  = 'transparent';
+			nt_params.style[i].borderBottomColor = 'transparent';
+			nt_params.style[i].borderTopColor    = 'transparent';
+//			tw_params.style[i].margin     = 0;
+//			tw_params.style[i].padding    = 0;
+		}
+//		nt_params.innerHTML0          = nt_params.spans[0].innerHTML;
+//		nt_params.spans[0].innerHTML  = '&nbsp;';
+		nt_params.inc                 = (nt_params.ntypewrite.end - nt_params.ntypewrite.start) / (nt_params.spantext.length + nt_params.ntypewrite.stx + nt_params.ntypewrite.etx);
+		
+		return;
+	}
+			
+	function format_credits_data(credits, vc_params){
+
+			var rows = credits.rows;
+			vc_params.element        = credits;
+			vc_params.style          = credits.style;
+			vc_params.window_height  = document.documentElement.clientHeight;
+			vc_params.credits_height = credits.offsetHeight;
+			vc_params.start          = [];
+			vc_params.end            = [];
+			for (var i = 0; i< rows.length; i++){
+				vc_params.start[i]     = (i === 0 ? 0 : vc_params.start[i-1]) + rows[i].offsetHeight / (vc_params.credits_height + vc_params.window_height);
+				vc_params.end  [i]     = vc_params.start[i]               + vc_params.credits_height / (vc_params.credits_height + vc_params.window_height);	
+			}
+
 		return;
 	}
 
@@ -784,10 +1113,10 @@
 				fg_params.divs[ndiv].removeAttribute('id');
 				fg_params.styles[ndiv]         = fg_params.divs[ndiv].style;
 				fg_params.styles[ndiv].opacity = (fg_params.fragment.begin == 'visible') ? 1.0 : 0.0;
-				fg_params.styles[ndiv].clip    = 'rect('  + ( i   *hclip) + 'px,'
-														  + ((j+1)*wclip) + 'px,'
-														  + ((i+1)*hclip) + 'px,'
-														  + ( j   *wclip) + 'px)';
+				fg_params.styles[ndiv].clip    = 'rect('  + ( i   *hclip) + 'px,' +
+														   ((j+1)*wclip) + 'px,' +
+														   ((i+1)*hclip) + 'px,' +
+														   ( j   *wclip) + 'px)';
 				fg_params.coords[ndiv]    	    = new Coords(rand_between(xmin, xmax),
 														     rand_between(ymin, ymax),
 														     (Math.random() < 0.5 ? 0 : 4),
@@ -991,7 +1320,7 @@ function run_slideshow(slideshow, ss_params, time, frame_number, frame_rate){
 		ss_params.slide_this       = slide_no;
 		ss_params.slide_start_time = time;
 		ss_params.trans_end_time   = time + ss_params.trans_len;
-console.log('SLIDE number =' + slide_no);		
+//console.log('SLIDE number =' + slide_no);		
 		set_image_size();
 	}
 	
@@ -1169,8 +1498,8 @@ console.log('SLIDE number =' + slide_no);
 //console.log('left =' + style_this.left + ' + top =' + style_this.top + ' + property left =' + x);
 			if ((ss_params.type == 'appearing') || (ss_params.type == 'expanding') || (ss_params.type == 'stretching') || (ss_params.type == 'static')){
 				style_this.left = ss_params.slide_this_offset + 'px';
-				style_this.top  = get_css_used_val(cstyle, 'top'       , 'height', this_p)
-								- get_css_used_val(cstyle, 'margin-top', 'height', this_img) + 'px';
+				style_this.top  = get_css_used_val(cstyle, 'top'       , 'height', this_p) -
+								 get_css_used_val(cstyle, 'margin-top', 'height', this_img) + 'px';
 			} else if (ss_params.type == 'splitting'){
 				style_this.visibility    = "hidden";
 				style_this_half0.display = "block";
@@ -1183,19 +1512,19 @@ console.log('SLIDE number =' + slide_no);
 //				style_this_half0.opacity = (ss_params.type == 'static');
 //				style_this_half0.opacity = (ss_params.type == 'static');
 
-				style_this.left = get_css_used_val(cstyle, 'left'       , 'width', this_p)
-								- get_css_used_val(cstyle, 'margin-left', 'width', this_img) + 'px';
-				style_this.top  = get_css_used_val(cstyle, 'top'       , 'height', this_p)
-								- get_css_used_val(cstyle, 'margin-top', 'height', this_img) + 'px';
+				style_this.left = get_css_used_val(cstyle, 'left'       , 'width', this_p) -
+								 get_css_used_val(cstyle, 'margin-left', 'width', this_img) + 'px';
+				style_this.top  = get_css_used_val(cstyle, 'top'       , 'height', this_p) -
+								 get_css_used_val(cstyle, 'margin-top', 'height', this_img) + 'px';
 //co			style_this_half0.left = style_this.left;
 				style_this_half1.left = style_this.left;
 				style_this_half0.top  = style_this.top;
 				style_this_half1.top  = style_this.top;
 			} else {
-				style_this.left = get_css_used_val(cstyle, 'left'       , 'width', this_p)
-								- get_css_used_val(cstyle, 'margin-left', 'width', this_img) + 'px';
-				style_this.top  = get_css_used_val(cstyle, 'top'       , 'height', this_p)
-								- get_css_used_val(cstyle, 'margin-top', 'height', this_img) + 'px';
+				style_this.left = get_css_used_val(cstyle, 'left'       , 'width', this_p) -
+								 get_css_used_val(cstyle, 'margin-left', 'width', this_img) + 'px';
+				style_this.top  = get_css_used_val(cstyle, 'top'       , 'height', this_p) -
+								 get_css_used_val(cstyle, 'margin-top', 'height', this_img) + 'px';
 //console.log(ss_params.slide_this_move_distance);
 
 			}
@@ -1523,6 +1852,278 @@ console.log('SLIDE number =' + slide_no);
 		}
 	}      // #################### END OF run_explosion ####################
 
+	const ANIMS = [
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [-150,  -50], rotate: -180, scale: 3   , color: ''},
+		 {pcnt:	 60, norm: 0.6 , opacity: 0.6 , translate: [  20,   20], rotate:   30, scale: 0.3 , color: ''},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [ 200, -100], rotate:    0, scale: 2   , color: ''},
+		 {pcnt:	 60, norm: 0.6 , opacity: 0.6 , translate: [   0,   20], rotate: -180, scale: 0.5 , color: ''},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [-300,    0], rotate:    0, scale: 0   , color: ''},
+		 {pcnt:	 60, norm: 0.6 , opacity: 0.6 , translate: [  20,    0], rotate:    0, scale: 1   , color: ''},
+		 {pcnt:	 80, norm: 0.8 , opacity: 0.8 , translate: [  20,    0], rotate:    0, scale: 1   , color: ''},
+		 {pcnt:	 95, norm: 0.95, opacity: 0.95, translate: [   0,    0], rotate:    0, scale: 1.5 , color: '#0ff'},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [   0, -100], rotate:  360, scale: 1   , color: ''},
+		 {pcnt:	 30, norm: 0.3 , opacity: 0.3 , translate: [   0,  -50], rotate:  180, scale: 1   , color: ''},
+		 {pcnt:	 60, norm: 0.6 , opacity: 0.6 , translate: [   0,   20], rotate:    0, scale: 0.8 , color: ''},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [   0, -100], rotate:  360, scale: 0   , color: ''},
+		 {pcnt:	 30, norm: 0.3 , opacity: 0.3 , translate: [   0,  -50], rotate:  180, scale: 1   , color: ''},
+		 {pcnt:	 50, norm: 0.5 , opacity: 1   , translate: [   0,   20], rotate:    0, scale: 0.8 , color: ''},
+		 {pcnt:	 80, norm: 0.6 , opacity: 0   , translate: [-100, -100], rotate: -180, scale: 1.5 , color: ''},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [ 150,    0], rotate: -180, scale: 1   , color: ''    , order: 'rt'},
+		 {pcnt:	 10, norm: 0.1 , opacity: 1   , translate: [ 135,    0], rotate: -162, scale: 1   , color: ''    , order: 'rt'},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''    , order: 'rt'}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [-150,    0], rotate:    0, scale: 0.3 , color: ''},
+		 {pcnt:	 40, norm: 0.4 , opacity: 1   , translate: [  50,    0], rotate:    0, scale: 0.7 , color: ''},
+		 {pcnt:	 60, norm: 0.6 , opacity: 0.5 , translate: [  25,    0], rotate:    0, scale: 1.35, color: '#14b'},
+		 {pcnt:	 80, norm: 0.8 , opacity: 0   , translate: [   0,    0], rotate:    0, scale: 2   , color: '#780'},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [-150,  -50], rotate: -180, scale: 3   , color: ''},
+		 {pcnt:	 60, norm: 0.6 , opacity: 0.6 , translate: [  20,   20], rotate:   30, scale: 0.3 , color: ''},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 0   , translate: [   0,    0], rotate: -360, scale: 0   , color: ''   , order: 'rt'},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 1   , translate: [   0,  -50], rotate:    0, scale: 0   , color: ''   , order: 'rt'},
+		 {pcnt:	 40, norm: 0.4 , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	 70, norm: 0.7 , opacity: 1   , translate: [   0,  -20], rotate:    0, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	 90, norm: 0.7 , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	 95, norm: 0.95, opacity: 1   , translate: [   0,   -7], rotate:    0, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 1   , translate: [-150,    0], rotate:    0, scale: 0   , color: ''   , order: 'rt'},
+		 {pcnt:	 40, norm: 0.4 , opacity: 1   , translate: [  90,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	 70, norm: 0.7 , opacity: 1   , translate: [ -50,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	 90, norm: 0.7 , opacity: 1   , translate: [  15,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	 95, norm: 0.95, opacity: 1   , translate: [  -7,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'}
+		],
+		[{pcnt:	  0, norm: 0   , opacity: 1   , translate: [ 150,   50], rotate: -180, scale: 0   , color: ''   , order: 'rt'},
+		 {pcnt:	 95, norm: 0.95, opacity: 1   , translate: [   0,    0], rotate: -180, scale: 1   , color: ''   , order: 'rt'},
+		 {pcnt:	100, norm: 1   , opacity: 1   , translate: [   0,    0], rotate:    0, scale: 1   , color: ''   , order: 'rt'}
+		]
+	];
+	
+	function animps(a) {
+		var r = [];
+		for (var i = 0; i < a.length; i++) {
+			r.push({
+						p: a[i].pcnt,
+						n: a[i].norm,
+						o: a[i].opacity,
+						x: a[i].translate[0],
+						y: a[i].translate[1],
+						r: a[i].rotate,
+						s: a[i].scale,
+						c: a[i].color,
+				order: a[i].order
+			});
+		}
+		return r;
+	}
+	
+	
+	function run_rolling(rolling, rl_params, time, frame_number, frame_rate) {
+
+		var t            = time;
+		var rlp          = rl_params;	// For convenience of coding.
+		var rlp_spandata;
+		var nanims  = ANIMS[rlp.roll.type].length;
+		var nspans  = rlp.spans.length;
+			
+		if (t === 0.0) {	// Initialise certain rlp properties.
+			rlp.last_time    = -1;
+			rlp.frame_len    = 1000.0 / frame_rate;		// Length of a frame in msecs.
+			rlp.start        = +rlp.roll.start;
+			rlp.end          = +rlp.roll.end;
+			rlp.duration     = rlp.end - rlp.start;
+			rlp.state        = 'flowed';
+			rlp.text_flow = animps(ANIMS[rlp.roll.type]);
+			
+			var aprops    = Object.keys(rlp.roll).sort();
+			rlp.keyframes = [];
+//			rlp.keyframes.push({prop: -099, n: -0.99, val: 'INITIALISE'}); //  000: flow, 050: wait,  100: wait
+
+			for (var i = 0; i < aprops.length; i++) {
+				if (aprops[i].match(/^\d+(.\d)*$/) !== null) { // This property is a keygrame.
+					rlp.keyframes.push({prop: aprops[i], n: 0.01 * aprops[i], val: rlp.roll[aprops[i]]}); //  000: flow, 050: wait,  100: wait
+				}
+			}
+//console.log(rlp.keyframes);
+			for (i = rlp.keyframes.length - 1; i>= 0; i--) {
+				rlp.keyframes[i].stt = rlp.start + rlp.keyframes[i].n * rlp.duration;	// Start time
+				rlp.keyframes[i].dur = (i == rlp.keyframes.length - 1) ? 0 : (rlp.keyframes[i+1].stt - rlp.keyframes[i].stt);	// Duration
+				rlp.keyframes[i].end = rlp.keyframes[i].stt + rlp.keyframes[i].dur;		// End time
+			}
+			
+			rlp.kfn        = -1;	// Keyframe number.
+			rlp.transition = rlp.keyframes[0].val;// e.g. flow
+			rlp.nkframes   = 0;
+
+			rlp.spandata = [];
+			for (i = 0; i < nspans ; i++) {
+				rlp.spandata[i] = {finalised: false, delay: i/nspans, kfn: 0,
+													 color: window.getComputedStyle(rlp.spans[i], null).getPropertyValue("color")};
+				rlp.styles[i].opacity = (rlp.roll.begin == 'visible') ? 1.0 : 0.0;
+			}
+
+//console.log('time=', t, ', rlp=', rlp, ', Elusien=', Elusien);	
+		}
+
+		var text_flow  = rlp.text_flow;	// For convenience of coding;
+    rlp_spandata = rlp.spandata;		
+				
+		if (rlp.last_time == time) {return -1;} // This frame is the same as the last one - not sure if this can happen!
+		
+		rlp.last_time = time;
+		
+		if ((t >= rlp.start) && (t <= rlp.end)) {  // Usually start=0.0 and end=1.0
+			
+// The next statement is to get over the problem that the time never reaches 1.0. the last time is for the last frame
+// which can appear up to 1/frame-rate seconds before 1.0.
+
+			if ((rlp.end-t) < 2*Elusien.frame_length){t = rlp.end;}
+
+			var keyframes = rlp.keyframes;	// For convenience of coding.
+			if ((rlp.nkframes == 0) || (t > rlp.keyframes[rlp.kfn].end)) {	// we have just moved onto the next keyframe e.g flow to wait
+				rlp.nkframes++;
+				rlp.kfn++;
+				rlp.transition = keyframes[rlp.kfn].val;
+//console.log('t=', t, ', New Keyframe number=', rlp.kfn, ', keyframes=', keyframes);
+			
+				if (keyframes.n == 1) {	// 100%
+					switch (rlp.state) {
+						case 'rolled':
+							rolling.innerHTML = rlp.originalHTML;
+							rolling.opacity = (rlp.roll.finish == 'visible') ? 1.0 : 0.0;
+							break;
+						case 'flowing':		// Set characters to 'imploded' state.
+							rlp.state = 'flowed';
+							rolling.innerHTML = rlp.originalHTML;
+							rolling.opacity = (rlp.roll.finish == 'visible') ? 1.0 : 0.0;
+							break;
+					}
+					return;
+				} else {	// Just moved into a new keyframe that is not the last one.
+//console.log(rlp.kfn, keyframes);
+//console.log(keyframes[rlp.kfn]);
+					rlp.transition = keyframes[rlp.kfn].val;
+					switch (rlp.transition) {
+						case 'wait':
+							break;
+						case 'flow':
+							rlp.state = 'rolled';
+							break;
+						default:
+							err = 'Illegal value for keyframe ' + keyframes[rlp.kfn].prop + ':' + rlp.transition;
+							console.log(err);
+							alert(err);
+							throw(err);
+					}
+					if (rlp.transition == 'wait') {
+							rolling.innerHTML = rlp.originalHTML;
+							rolling.opacity = (rlp.roll.finish == 'visible') ? 1.0 : 0.0;
+					} else {
+//console.log(nanims, rlp.kfn, keyframes, text_flow, rlp.transition);
+						for (var it = nanims - 1; it>= 0; it--){
+							text_flow[it].stt = keyframes[rlp.kfn].stt + text_flow[it].n * 0.5 * keyframes[rlp.kfn].dur;	// Start time
+							text_flow[it].dur = (it == nanims - 1) ? 0 :  text_flow[it+1].stt - text_flow[it].stt;	// Duration
+							text_flow[it].end = text_flow[it].stt + text_flow[it].dur;	// End time
+						}
+						for (var ip = 0; ip <nspans; ip++) {
+							rlp_spandata[ip].kfn = 0;
+							rlp_spandata[ip].stt = text_flow[0].stt + rlp_spandata[ip].delay * (0.5 * keyframes[rlp.kfn].dur);
+							rlp_spandata[ip].end =                    rlp_spandata[ip].stt + text_flow[rlp_spandata[ip].kfn].dur;
+						}
+					}
+				}
+			}
+				
+//console.log(rlp);			
+			for (var m=0; m<nspans; m++) {
+
+//console.log('rlp.transition=', rlp.transition, ', rlp.state=', rlp.state, 'rlp.trans_end=', rlp.trans_end);					
+
+				switch (rlp.transition) {
+					case 'wait':		// Do nothing, the spans are static, they do not animate.
+						return;
+					case 'flow':	// Flow each span by 1 increment, time-offset each span by a small amount..
+						for (var s = 0; s < nspans ; s++) {
+							if ((t >=  rlp_spandata[s].end)  && (rlp_spandata[s].kfn != nanims-1)) {
+								rlp_spandata[s].kfn++;
+								rlp_spandata[s].stt  = rlp_spandata[s].end;
+								rlp_spandata[s].end  = rlp_spandata[s].stt + text_flow[rlp_spandata[s].kfn].dur;
+							}
+							var spd      = rlp_spandata[s];
+							var kfn      = spd.kfn;
+							var span_stt = spd.stt;
+							var span_end = spd.end;
+							var tkfn     = text_flow[kfn];
+							var tkfnp1   = text_flow[kfn+1];
+							var easing   = rlp.roll.easing[rlp.roll.ease];
+//if (s === 0) console.log('DEBUG: t=', t, ', span_stt=', span_stt, ', span_end=', span_end, ', spd=', spd);							
+							if ((t >= span_stt) && (kfn != nanims-1)) {
+								rlp.styles[s].webkitTransform = tkfn.order == 'rt' ? (
+														  'rotate('  	 + easing(t-span_stt, tkfn.r, tkfnp1.r - tkfn.r, span_end - span_stt) + 'deg) '
+														+	'translate(' + easing(t-span_stt, tkfn.x, tkfnp1.x - tkfn.x, span_end - span_stt) + 'px ' 
+														+ ', '				 + easing(t-span_stt, tkfn.y, tkfnp1.y - tkfn.y, span_end - span_stt) + 'px) '
+														+ 'scale('		 + easing(t-span_stt, tkfn.s, tkfnp1.s - tkfn.s, span_end - span_stt) + ')'
+																																) : (
+															'translate(' + easing(t-span_stt, tkfn.x, tkfnp1.x - tkfn.x, span_end - span_stt) + 'px ' 
+														+ ', '				 + easing(t-span_stt, tkfn.y, tkfnp1.y - tkfn.y, span_end - span_stt) + 'px) '
+														+ 'rotate('  	 + easing(t-span_stt, tkfn.r, tkfnp1.r - tkfn.r, span_end - span_stt) + 'deg) '
+														+ 'scale('		 + easing(t-span_stt, tkfn.s, tkfnp1.s - tkfn.s, span_end - span_stt) + ')'
+																																) ;
+								rlp.styles[s].opacity 				= easing(t-span_stt, tkfn.o, tkfnp1.o - tkfn.o, span_end - span_stt);
+								rlp.styles[s].color           = (tkfn.c != '') ? tkfn.c : spd.color;
+//if (s === 0) console.log('DEBUG: t=', t, text_flow[kfn], ', tkfn.c=', tkfn.c, ', webkitTransform=', rlp.styles[s].webkitTransform);
+							} else if ((t >= span_stt) && ! spd.finalised) {
+								spd.finalised = (kfn == nanims - 1);
+								rlp.styles[s].webkitTransform = text_flow[nanims-1].order == 'rt' ? (
+														  'rotate('  	 + text_flow[nanims-1].r + 'deg)'
+														+ 'translate(' + text_flow[nanims-1].x + 'px'
+														+ ', '				 + text_flow[nanims-1].y + 'px) '
+														+ ' scale(' 	 + text_flow[nanims-1].s + ') '
+																																							) : (
+														  'translate(' + text_flow[nanims-1].x + 'px'
+														+ ', '				 + text_flow[nanims-1].y + 'px) '
+														+ 'rotate('  	 + text_flow[nanims-1].r + 'deg)'
+														+ ' scale(' 	 + text_flow[nanims-1].s + ') '
+																																							)	;
+								rlp.styles[s].opacity 				=  text_flow[nanims-1].o;					
+								rlp.styles[s].color           = (text_flow[nanims-1].c != '') ? text_flow[nanims-1].c : spd.color;
+							}
+						}
+						if (t !== 1) {
+							rlp.state = 'flowing';
+							return;
+						}
+						rlp.state = 'flowed';
+						rolling.innerHTML = rlp.originalHTML;
+						return;
+
+					default:
+							err = 'BAD value [rlp.transition=' + rlp.transition + ']';
+							console.log(err);
+							alert(err);
+							throw(err);
+				}
+			}
+		}
+	}      // #################### END OF run_rolling ####################
+
+
 	function run_fragment(fragment, fg_params, time, frame_number, frame_rate) {
 
 		var t = time;
@@ -1560,6 +2161,7 @@ console.log('SLIDE number =' + slide_no);
 // which can appear up to 1/frame-rate seconds before 1.0. Since we do not know the framerate, assume it is 24fps.
 
 			if ((end-t) < 2*Elusien.frame_length){t = end;}
+			
 			if ((aprops.length > 0) && (aprops[0].match(/^\d+(.\d)*$/) !== null)){ // We have a keyframe e.g. 080, first is 000
 				nkeyframes++;
 				sprop    =  aprops[0];	// As a string e.g. '080'
@@ -1567,7 +2169,7 @@ console.log('SLIDE number =' + slide_no);
 //console.log('t=', t, ', check=', (prop * duration / 100) + start);
 				if (((prop * duration / 100) + start) <= t) { // the current time is >= the keyframe, so this keyframe is now active
 //console.log('DEBUG: t=' + t + ', aprops[0]=' + aprops[0] + ', val=' + ex_params.explode[sprop] + ', FROM=', (+start + (prop * duration / 100)));
-console.log('DIVS =', fg_params.divs.length);
+//console.log('DIVS =', fg_params.divs.length);
 					if (prop == 100) {
 						switch (fg_params.state) {
 							case 'defragmented':
@@ -1845,8 +2447,8 @@ console.log('DIVS =', fg_params.divs.length);
 				st_params.cues[i].start = st_params.cues[i].startTime * st_params.real_to_norm;
 				st_params.cues[i].end   = st_params.cues[i].endTime   * st_params.real_to_norm;
 			}
-console.log(st_params);
-console.log('LENGTH', st_params.cues.length);
+//console.log(st_params);
+//console.log('LENGTH', st_params.cues.length);
 		}
 		
 		st_params.last_time = time;
@@ -1854,7 +2456,7 @@ console.log('LENGTH', st_params.cues.length);
 		if (st_params.next_cue >= 0) {
 			if (st_params.cues[st_params.next_cue].start <= t) {
 // This cue is not yet being processed, but starts now.				
-console.log(st_params.next_cue);
+//console.log(st_params.next_cue);
 				span = document.createElement('span');
 				span.innerHTML = '<br>' + st_params.cues[st_params.next_cue].text.replace(/\n/g, '<br>\n');
 				st_params.cues[st_params.next_cue].span       = subtitle.appendChild(span);
@@ -1897,6 +2499,40 @@ console.log(st_params.next_cue);
 			if (st_params.ncues_active === 0) {subtitle.style.visibility = 'hidden';}
 		}
 	}      // #################### END OF run_subtitle ####################
+	
+	function run_credits(credits, vc_params, time, frame_number, frame_rate) {
+
+		var t = time;
+		
+		if (time === 0.0) {
+			vc_params.last_time = -1;
+			vc_params.frame_len = 1000.0 / frame_rate;		// Length of a frame in msecs.
+//console.log(vc_params);
+			if (vc_params.scrolling) {
+				vc_params.style.webkitTransform = 'translateY(' + vc_params.window_height + 'px)';
+				  credits.style.webkitTransform = 'translateY(99999px)';	// Shift it way off the screen to start with, so no flash of text at the beginning.
+			}
+			return;
+		}
+		
+		if (vc_params.last_time == time) {return -1;} // This frame is the same as the last one!
+		
+		if (vc_params.last_time === -1) {
+// This is the second frame, so now we know the actual frame duration in NORMALISED time
+			vc_params.frame_len_norm = time;
+		}
+		
+		if ((1.0-t) < 2*Elusien.frame_length){t = 1.0;}
+		
+// If scrolling move the credits up by a small amount.
+
+		if (vc_params.credits.scrolling) {
+			credits.style.webkitTransform = 'translateY(' + (vc_params.window_height - t * (vc_params.window_height + vc_params.credits_height)) + 'px)';
+		}
+		
+		return;
+				
+	}      // #################### END OF run_credits ####################
 
 	function run_typewriter(typewriter, tw_params, time, frame_number, frame_rate) {
 
@@ -1906,7 +2542,7 @@ console.log(st_params.next_cue);
 		if (time === 0.0) {
 			tw_params.last_time                = -1;
 			tw_params.frame_len                = 1000.0 / frame_rate;		// Length of a frame in msecs.
-console.log(tw_params);
+//console.log(tw_params);
 			return;
 		}
 		
@@ -1955,7 +2591,68 @@ console.log(tw_params);
 			return;
 		}
 		
-	}      // #################### END OF run_typewriter ####################
+	}      // #################### END OF run_ntypewriter ####################
+
+	function run_ntypewriter(ntypewriter, nt_params, time, frame_number, frame_rate) {
+
+		var t = time;
+		var i, n;
+		
+		if (time === 0.0) {
+			nt_params.last_time                = -1;
+			nt_params.frame_len                = 1000.0 / frame_rate;		// Length of a frame in msecs.
+			nt_params.element.innerHTML = '';
+			return;
+		}
+		
+		if (nt_params.last_time == time) {return -1;} // This frame is the same as the last one!
+		
+		if (nt_params.last_time === -1) {
+// This is the second frame, so now we know the actual frame duration in NORMALISED time
+			nt_params.frame_len_norm = time;
+		}
+		
+		nt_params.last_time = time;
+		if ((t < nt_params.ntypewrite.start) || (t > nt_params.ntypewrite.end)){
+			return;
+		}
+		
+		if (Math.abs(nt_params.ntypewrite.end - t) < 2 * Elusien.frame_length){t = nt_params.ntypewrite.end;}
+		
+		n = nt_params.span_no;
+		
+		if (t == nt_params.ntypewrite.end) {
+//			nt_params.style[n-1].borderLeftColor = 'transparent';
+			return;
+		}
+		
+		if (t < nt_params.ntypewrite.start + nt_params.ntypewrite.stx * nt_params.inc) {
+//			nt_params.style[0].borderLeftColor = nt_params.borderLeftColor;
+//			nt_params.style[0].visibility      = 'visible';
+				nt_params.element.innerHTML = '|';
+			return;
+		}
+
+		i = nt_params.spantext.length;
+		if (t > nt_params.ntypewrite.start + (nt_params.ntypewrite.stx + i) * nt_params.inc) { // Past last char
+			return;
+		}
+		
+		if (t > nt_params.ntypewrite.start + (nt_params.ntypewrite.stx + n) * nt_params.inc) {
+			if (n === 0) {
+//				nt_params.style[n].borderRightColor  = 'transparent';
+				nt_params.element.innerHTML = nt_params.spantext[n] + '<bdo dir="ltr">|</bdo>';
+			} else {
+//				nt_params.style[n - 1].borderLeftColor = 'transparent';
+				nt_params.element.innerHTML = nt_params.element.innerHTML.slice(0, -22) + nt_params.spantext[n] + '<bdo dir="ltr">|</bdo>';
+			}
+			
+//			nt_params.style[n].visibility       = 'visible';
+			nt_params.span_no++;
+			return;
+		}
+		
+	}      // #################### END OF run_ntypewriter ####################
 
 
 	function rep_defaults(defaults, args) {
@@ -1983,7 +2680,7 @@ console.log(tw_params);
 			return false;
 		}
 		
-		for (var key in args) {
+		for (key in args) {
 			if (key == 'validate') {continue;}
 			if (typeof args.validate[key] == 'undefined'){
 				err   += ' UNKNOWN parameter| ' + key + ': ' + args[key];
@@ -2001,11 +2698,22 @@ console.log(tw_params);
 		return fault;
 	}		
 	
-	function Coords(x, y, z, d) {
-		this.x = x;	// x-coord
-		this.y = y;	// y-coord
-		this.z = z; // x-coord (simulated by scaling up or down by this value)
+	function Coords(x, y, z, d, o, r, s) {
+		this.x = x;	// x-coord or translateX
+		this.y = y;	// y-coord or translateY
+		this.z = z; // x-coord or translateZ (simulated by scaling up or down by this value)
 		this.d = d;	// delay (0.0 for first, almost 1.0 for last.)
+		this.o = o; // opacity(o)
+		this.r = r; // rotate(r + 'deg')
+		this.s = s; // scale(s)
+	}	
+	
+	function Xform(kf, st, en, kfst, kfen) {
+		this.kf   = kf;		// current keyframe index (first is 0)
+		this.st   = st;		// time this span STarts its transform
+		this.en   = en;		// time this span ENds   its tranformation
+		this.kfst = kfst;	// time this span's current Keyfram STarts its transformation
+		this.kfen = kfen; // time this span's current KeyFrame ENds  its transformation
 	}
 	
 	function Explode() {
@@ -2034,13 +2742,41 @@ console.log(tw_params);
 										// 'exploding' = characters are in the process of exploding
 										// 'waiting'   = no animation in progress
 	}
-	function fragment() {
+	
+	function Roll() {
 /*
-	The Explode object constructor. Set up some defaults.
+	The Roll object constructor. Set up some defaults.
 */
 		this.start      = 0.0;
 		this.end        = 1.0;
-		this.ease       = 'easInOutSine';	// The easing to use for the explosion
+		this.ease       = 'easInOutSine';	// The easing to use for the roll
+		this.svis       = 'visible';		// Start visibility ('visible' / 'hidden')
+		this.fvis       = 'visible';		// Start visibility ('visible' / 'hidden')
+	}
+	
+	function Rl_Param() {
+		this.roll      = [];			// An array of Roll objects
+		this.spans     = [];			// the HTML_Collection of the spans with classname 'e_x_p_l_o_d_e' 
+		this.styles    = [];			// the CSS style objects for the spans with classname 'e_x_p_l_o_d_e' 
+		this.coords    = [];			// the x, y, z, time-delay coordinates for these spans 
+		this.last_time = -1;			// used to check if the producer is called multiple times with the same time parameter
+		this.frame_len = 0;				// the frame-length, in normalised time (0.0 to 10.0) units.
+		this.nh        = 0;				// No if horizontal slices.
+		this.nv        = 0;             // No of vertical slices.
+		this.state     = 'flowed';	// 'flowed  = initial state (characters are at their normal positions)
+										// 'rolled'  = characters are at their rolled-up positions
+										// 'flowing' = characters are in the process of flowing
+										// 'rolling'   = characters are in the process of rolling (-up)
+										// 'waiting'   = no animation in progress
+	}
+	
+	function fragment() {
+/*
+	The fragment object constructor. Set up some defaults.
+*/
+		this.start      = 0.0;
+		this.end        = 1.0;
+		this.ease       = 'easInOutSine';	// The easing to use for the frahmentation
 		this.svis       = 'visible';		// Start visibility ('visible' / 'hidden')
 		this.fvis       = 'visible';		// Start visibility ('visible' / 'hidden')
 	}
@@ -2065,14 +2801,30 @@ console.log(tw_params);
 		this.frame_len = 0;				// the frame-length, in normalised time (0.0 to 10.0) units.
 	}
 	
+	function Vc_Param() {
+		this.credits   = [];			// An array of Credits objects (should only be one)
+		this.last_time = -1;			// used to check if the producer is called multiple times with the same time parameter
+		this.frame_len = 0;				// the frame-length, in normalised time (0.0 to 1.0) units.
+	}
+	
 	function Tw_Param() {
-		this.typewriter = [];			// An array of Subtitle objects
+		this.typewriter = [];			// An array of Typewriter objects
 		this.spans      = [];			// the HTML_Collection of the spans with classname '_typewriter_' 
 		this.style      = [];			// the CSS style objects for the spans with classname '_typewriter_'
 		this.cstyle     = [];			// the CSS computed style objects for the spans with classname '_typewriter_'
 		this.span_no    = 0;			// the last span that is VISIBLE
 		this.last_time  = -1;			// used to check if the producer is called multiple times with the same time parameter
-		this.frame_len  = 0;			// the frame-length, in normalised time (0.0 to 10.0) units.
+		this.frame_len  = 0;			// the frame-length, in normalised time (0.0 to 1.0) units.
+	}
+	
+	function Nt_Param() {
+		this.ntypewriter = [];			// An array of nTypewriter objects
+		this.spans      = [];			// the HTML_Collection of the spans with classname '_typewriter_' 
+		this.style      = [];			// the CSS style objects for the spans with classname '_typewriter_'
+		this.cstyle     = [];			// the CSS computed style objects for the spans with classname '_typewriter_'
+		this.span_no    = 0;			// the last span that is VISIBLE
+		this.last_time  = -1;			// used to check if the producer is called multiple times with the same time parameter
+		this.frame_len  = 0;			// the frame-length, in normalised time (0.0 to 1.0) units.
 	}
 	
     function start_process() {
@@ -2088,41 +2840,54 @@ console.log(tw_params);
 
         ==============================================================================================================
 */
-        var easy            = new Easing_Funs(); 
-        var webvfxelems     = document.getElementsByClassName('webvfx');
+    var easy            = new Easing_Funs(); 
+    var webvfxelems     = document.getElementsByClassName('webvfx');
 		var centerelems     = document.querySelectorAll('[data-center]');
-        var animate         = [];
-        var sw_params       = [];
+    var animate         = [];
+    var sw_params       = [];
 		var params          = {};
 		var explosions      = [];
 		var ex_params       = [];
+		var rollings        = [];
+		var rl_params       = [];
 		var fragments       = [];
 		var fg_params       = [];
 		var subtitles       = [];
 		var st_params       = [];
 		var typewriters     = [];
+		var ntypewriters    = [];
 		var tw_params       = [];
+		var nt_params       = [];
+		var credits         = [];
+		var vc_params       = [];
 		var slideshows      = [];
 		var anims           = [];
 		var stopwatches     = [];
 		var animate_string  = [];
 		var explosion_string = [];
+		var rolling_string  = [];
 		var fragment_string = [];
 		var subtitle_string = [];
 		var typewriter_string = [];
+		var ntypewriter_string = [];
+		var credits_string  = [];
 		var data_slideshow;
-        var data_animate;
+		var data_animate;
 		var data_stopwatch;
 		var data_explosion;
+		var data_rolling;
 		var data_fragment;
 		var data_subtitle;
 		var data_typewriter;
+		var data_ntypewriter;
+		var data_credits;
 		var pre_subtitle;
 		var json;
-		var i, an, sw, ss, ex, fg, st, tw, np;
+		var i, an, sw, ss, ex, rl, fg, st, tw, nt, vc, np;
 		var ht, wd;
- 		var	ok          = true, ok_start = false, ok_end = false, ok_ease = false, ok_000 = false, ok_100 = false, ok_keyframe = false;
-        var duration    = 8;             // default duration of clip (in secs)
+		var prop;
+ 		var	ok = true, ok_start = false, ok_end = false, ok_ease = false, ok_type = false, ok_000 = false, ok_100 = false, ok_keyframe = false, ok_t = false, ok_h = false, ok_cl = false, ok_cr = false, ok_scale = false;
+    var duration    = 8;             // default duration of clip (in secs)
 		
 		params.browser  = (typeof webvfx == "undefined");
         Elusien.frame_rate  = 30;            // Default frame-rate (in fps)
@@ -2138,7 +2903,7 @@ console.log(tw_params);
 		
 // First center any elements that have the "data-center" attribute.
 
-console.log(centerelems, ', ', centerelems.length);
+//console.log(centerelems, ', ', centerelems.length);
 		for (i = 0; i < centerelems.length; i++) {
 			center = centerelems[i].getAttribute('data-center');
 			switch (center) {
@@ -2173,7 +2938,7 @@ console.log(centerelems, ', ', centerelems.length);
 			}
 		}
 
-		for (i = 0, an=0, sw=0, ss=0, ex=0, fg=0, st=0, tw=0, np=0; i < webvfxelems.length; i++) {
+		for (i = 0, an=0, sw=0, ss=0, ex=0, rl=0, fg=0, st=0, tw=0, nt=0, vc=0, np=0; i < webvfxelems.length; i++) {
 			if (webvfxelems[i].hasAttribute('data-animate'   )){
 				         anims[an] = webvfxelems[i];
 				animate_string[an] = anims[an].getAttribute('data-animate' );
@@ -2191,19 +2956,32 @@ console.log(centerelems, ', ', centerelems.length);
 				slideshows[ss++] = webvfxelems[i];
 			}
 			if (webvfxelems[i].hasAttribute('data-explosion' )){
-					   ex_params[ex] = new Ex_Param(); 
+					     ex_params[ex] = new Ex_Param(); 
 				      explosions[ex] = webvfxelems[i];
 				explosion_string[ex] = explosions[ex].getAttribute('data-explosion' );
 				ex++;
 			}
+			if (webvfxelems[i].hasAttribute('data-credits')){
+					   vc_params[vc] = new Vc_Param(); 
+				       credits[vc] = webvfxelems[i];
+				credits_string[vc] = credits[vc].getAttribute('data-credits' );
+				vc++;
+			}
+			if (webvfxelems[i].hasAttribute('data-textflow' )){
+					   rl_params[rl] = new Rl_Param(); 
+				      rollings[rl] = webvfxelems[i];
+				rolling_string[rl] = rollings[rl].getAttribute('data-textflow' );
+				if (vc_params.length !== 0) { rl_params[rl].vc_params = vc_params[0]; }
+				rl++;
+			}
 			if (webvfxelems[i].hasAttribute('data-fragment'  )){
-					  fg_params[fg] = new Fg_Param(); 
+					    fg_params[fg] = new Fg_Param(); 
 				      fragments[fg] = webvfxelems[i];
 				fragment_string[fg] = fragments[fg].getAttribute('data-fragment' );
 				fg++;
 			}
 			if (webvfxelems[i].hasAttribute('data-subtitles' )){
-					  st_params[st] = new St_Param(); 
+					    st_params[st] = new St_Param(); 
 				      subtitles[st] = webvfxelems[i];
 				subtitle_string[st] = subtitles[st].getAttribute('data-subtitles' );
 				st++;
@@ -2213,6 +2991,12 @@ console.log(centerelems, ', ', centerelems.length);
 				      typewriters[tw] = webvfxelems[i];
 				typewriter_string[tw] = typewriters[tw].getAttribute('data-typewriter' );
 				tw++;
+			}
+			if (webvfxelems[i].hasAttribute('data-ntypewriter')){
+					     nt_params[nt] = new Nt_Param(); 
+				      ntypewriters[nt] = webvfxelems[i];
+				ntypewriter_string[nt] = ntypewriters[nt].getAttribute('data-ntypewriter' );
+				nt++;
 			}
 
 
@@ -2319,7 +3103,7 @@ console.log(centerelems, ', ', centerelems.length);
 			var ss_parent = slideshows[0].parentElement;
 			ht            = ss_parent.offsetHheight;
 			wd            = ss_parent.offsetWidth;
-			wd			  = ss_parent.getBoundingClientRect().width;
+			wd			  		= ss_parent.getBoundingClientRect().width;
 //console.log('BODY: ht=' + ht + ', wd=', wd );
 
 
@@ -2396,7 +3180,7 @@ console.log(centerelems, ', ', centerelems.length);
 			ok_100        = false;
 			ok_keyframe   = true;
 				
-			for (var prop in ex_params[ex].explode) {
+			for (prop in ex_params[ex].explode) {
 				switch (prop) {
 					case 'start':
 						ok_start = true;
@@ -2445,9 +3229,205 @@ console.log(centerelems, ', ', centerelems.length);
 			
 //console.log('DEBUG: animate=' + JSON.stringify(exlode[ex], null, 4));
 			
-            params[np++] = {explosion: explosions[ex], ex_params: ex_params[ex]};
+      params[np++] = {explosion: explosions[ex], ex_params: ex_params[ex]};
 //console.log(params[np-1]);
-        }
+    }
+		
+
+// Now process any video CREDITS (THIS MUST BE DONE BEFORE ROLLINGS [TEXTFLOW])
+// #############################  ############################################
+				
+		for  (vc = 0; vc < credits_string.length; vc++) {
+      data_credits = credits_string[vc];
+			if (data_credits === ''){
+				data_credits = "{scrolling: 'true', t: 'none|none|none', h: 'none|none|none', cl: 'none|none|none', cr: 'none|none|none'}";
+			}
+//console.log(data_credits);
+      json = credits_to_JSON_string(data_credits);
+//console.log('DEBUG: json='+ json);
+			try {
+               vc_params[vc].credits = JSON.parse(json);
+            }
+            catch(err) {
+                console.log("Error in credits number " + (vc+1) + ": " + err + "\n" + credits_string[vc]);
+                      alert("Error in credits number " + (vc+1) + ": " + err + "\n" + credits_string[vc]);
+                throw(err);
+            }
+//console.log('DEBUG:' + JSON.stringify(vc_params[vc].credits, null, 4));
+
+			ok    = true;
+			ok_scrolling = false;
+			ok_t  = false;
+			ok_h  = false;
+			ok_cl = false;
+			ok_cr = false;
+
+			for (prop in vc_params[vc].credits) {
+				switch (prop) {
+					case 'scrolling':
+						ok_scrolling = true;
+						vc_params[vc].credits.scrolling = (vc_params[vc].credits.scrolling === true) || (vc_params[vc].credits.scrolling === 'true');
+						break;
+					case 't':
+						ok_t  = true;
+						break;
+					case 'h':
+						ok_h  = true;
+						break;
+					case 'cl':
+						ok_cl = true;
+						break;
+					case 'cr':
+						ok_cr = true;
+						break;
+					default:
+						ok = false;
+//console.log('VAR=' + prop + ', OK=' + ok);
+				}
+			}
+			
+			if (!ok_scrolling) {vc_params[vc].credits.scolling = false;}
+			if (!ok_t        ) {vc_params[vc].credits.t        = 'none|none';}
+			if (!ok_h        ) {vc_params[vc].credits.h        = 'none|none';}
+			if (!ok_cl       ) {vc_params[vc].credits.cl       = 'none|none';}
+			if (!ok_cr       ) {vc_params[vc].credits.cr       = 'none|none';}
+						
+			format_credits_data(credits[vc], vc_params[vc]);
+			
+//console.log('DEBUG: creditss=' + JSON.stringify(credits[vc], null, 4));
+			
+      params[np++] = {credits: credits[vc], vc_params: vc_params[vc]};
+//console.log(params[np-1]);
+    }
+
+
+// Now process any rollings (textflow).
+// ####################################
+
+//console.log(rollings);				
+		for  (rl = 0; rl < rollings.length; rl++) {
+            data_rolling = rolling_string[rl];
+			if (data_rolling === ''){
+				data_rolling = '{start: 0.0, end: 1.0, ease: easeInOutSine, type: 0, 0%: flow}';
+			}
+//console.log(data_rolling);
+            json         = rolling_to_JSON_string(data_rolling);
+//console.log('DEBUG: json='+ json);
+			try {
+               rl_params[rl].roll = JSON.parse(json); 
+            }
+            catch(err) {
+                console.log("Error in rolling number " + (rl+1) + ": " + err + "\n" + rolling_string[rl]);
+                      alert("Error in rolling number " + (rl+1) + ": " + err + "\n" + rolling_string[rl]);
+                throw(err);
+            }
+//console.log('DEBUG:' + JSON.stringify(rl_params[rl].roll, null, 4));
+
+			ok            = true;
+			ok_start      = false;
+			ok_end        = false;
+			ok_ease       = false;
+			ok_begin      = false;
+			ok_finish     = false;
+			ok_type       = false;
+			ok_scale      = false;
+			ok_000        = false;
+			ok_100        = false;
+			ok_keyframe   = true;
+				
+			for (var prop in rl_params[rl].roll) {
+				switch (prop) {
+					case 'start':
+						ok_start = true;
+						break;
+					case 'end':
+						ok_end   = true;
+						break;
+					case 'ease':
+						ok_ease  = true;
+						break;
+					case 'begin':
+						ok_begin  = true;
+						break;
+					case 'finish':
+						ok_finish  = true;
+						break;
+					case 'type':
+						ok_type  = true;
+						break;
+					case 'scale':
+						ok_scale = true;
+						break;
+					case '000':
+						ok_000   = true;
+						break;
+					case '100':
+						ok_100   = true;
+						break;
+					default:
+						ok_keyframe = prop.match(/\d\d\d(.\d*)*/);
+						if (!ok_keyframe) {ok = false;}
+//console.log('VAR=' + prop + ', OK=' + ok);
+				}
+			}
+			
+			if (!ok_start ) {rl_params[rl].roll.start  = 0.0;}
+			if (!ok_end   ) {rl_params[rl].roll.end    = 1.0;}
+			if (!ok_ease  ) {rl_params[rl].roll.ease   = "easeInOutSine";}
+			if (!ok_begin ) {rl_params[rl].roll.begin  = "hidden";}
+			if (!ok_finish) {rl_params[rl].roll.finish = "visible";}
+			if (!ok_type  ) {rl_params[rl].roll.type   = 0;}
+			if (!ok_scale || (rl_params[rl].roll.scale === 'false') || (rl_params[rl].roll.scale === false)){
+				rl_params[rl].roll.scale  = false;
+			} else {
+				rl_params[rl].roll.scale  = true;
+			}
+			
+			if (!ok_000   ) {rl_params[rl].roll['000'] = 'flow';}
+			if (!ok_100   ) {rl_params[rl].roll['100'] = 'wait';}
+			
+			if (!(ok = ok_keyframe)) {
+				console.log("Error in rolling number " + (rl+1) + ': bad keyword:\n' + data_rolling + '\n');
+                      alert("Error in rolling number " + (rl+1) + ': bad keyword:\n' + data_rolling + '\n');
+                throw('Badly formatted rolling request.');
+			}
+
+			rl_params[rl].roll.easing = easy;
+			
+			if (+rl_params[rl].roll.type >= ANIMS.length) {
+				console.log("Error in rolling number " + (rl+1) + ': type parameter too large:\n' + data_rolling + '\n');
+                      alert("Error in rolling number " + (rl+1) + ': type parameter too large:\n' + data_rolling + '\n');
+                throw('Badly formatted rolling request.');				
+			}
+			
+
+			rl_params[rl].animparams   = ANIMS[rl_params[rl].roll.type];
+//console.log('========================================rl_params[rl].roll.scale=', rl_params[rl].roll.scale);			
+			if (rl_params[rl].roll.scale){
+				var font_size = parseInt(window.getComputedStyle(rollings[rl]).getPropertyValue('font-size'), 10);
+				rl_params[rl].animparams.forEach(function(obj){
+//console.log('########################################font_size=', font_size, obj, obj.translate[0], obj.translate[1]);
+					obj.translate[0] *= font_size / 32;
+					obj.translate[1] *= font_size / 32;
+//console.log('========================================font_size=', font_size, obj, obj.translate[0], obj.translate[1]);
+				});
+			}
+
+			if (Left(rl_params[rl].roll.start, 3) == 'vc|') {
+				var pcnt = rl_params[rl].roll.start.split('|')[1];
+				rl_params[rl].roll.start = rl_params[rl].vc_params.start[rollings[rl].parentNode.getAttribute('data-row')*1];
+				rl_params[rl].roll.end   = rl_params[rl].roll.start + 0.01 * pcnt;
+//console.log('rl_params[rl].roll.start=' + rl_params[rl].roll.start + ', rl_params[rl].roll.end=', rl_params[rl].roll.end);
+			}
+			
+			format_rolling_data(rollings[rl], rl_params[rl]);
+			
+//console.log('DEBUG: animate=' + JSON.stringify(rollings[rl], null, 4));
+			
+      params[np++] = {rolling: rollings[rl], rl_params: rl_params[rl]};
+//console.log(params[np-1]);
+    }
+		
 
 // Now process any fragmentations.
 // ###############################
@@ -2540,7 +3520,7 @@ console.log(centerelems, ', ', centerelems.length);
 //console.log('DEBUG: fragment=' + JSON.stringify(fragment[fg], null, 4));
 			
             params[np++] = {fragment: fragments[fg], fg_params: fg_params[fg]};
-console.log(params[np-1]);
+//console.log(params[np-1]);
         }
 
 // Now process any subtitles.
@@ -2583,9 +3563,9 @@ console.log(params[np-1]);
 			if (data_typewriter === ''){
 				data_typewriter = '{start: 0.0, end: 1.0, stx: 3, etx: 3}';
 			}
-console.log(data_typewriter);
+//console.log(data_typewriter);
             json         = typewriter_to_JSON_string(data_typewriter);
-console.log('DEBUG: json='+ json);
+//console.log('DEBUG: json='+ json);
 			try {
                tw_params[tw].typewrite = JSON.parse(json);
             }
@@ -2638,6 +3618,72 @@ console.log('DEBUG: json='+ json);
 //console.log('DEBUG: typewriters=' + JSON.stringify(typewriters[tw], null, 4));
 			
             params[np++] = {typewrite: typewriters[tw], tw_params: tw_params[tw]};
+//console.log(params[np-1]);
+        }
+
+// Now process any ntypewriters.
+// ###########################
+				
+		for  (nt = 0; nt < ntypewriters.length; nt++) {
+            data_ntypewriter = ntypewriter_string[nt];
+			if (data_ntypewriter === ''){
+				data_ntypewriter = '{start: 0.0, end: 1.0, stx: 3, etx: 3}';
+			}
+//console.log(data_typewriter);
+            json         = ntypewriter_to_JSON_string(data_ntypewriter);
+//console.log('DEBUG: json='+ json);
+			try {
+               nt_params[nt].ntypewrite = JSON.parse(json);
+            }
+            catch(err) {
+                console.log("Error in ntypewriter number " + (nt+1) + ": " + err + "\n" + ntypewriter_string[nt]);
+                      alert("Error in ntypewriter number " + (nt+1) + ": " + err + "\n" + ntypewriter_string[nt]);
+                throw(err);
+            }
+//console.log('DEBUG:' + JSON.stringify(tw_params[tw].typewrite, null, 4));
+
+			ok            = true;
+			ok_start      = false;
+			ok_end        = false;
+			ok_stx        = false;
+			ok_etx        = false;
+			ok_cursor     = false;
+				
+			for (var prop in nt_params[nt].ntypewrite) {
+				switch (prop) {
+					case 'start':
+						ok_start = true;
+						break;
+					case 'end':
+						ok_end   = true;
+						break;
+					case 'stx':
+						ok_stx   = true;
+						break;
+					case 'etx':
+						ok_etx   = true;
+						break;
+					default:
+						ok = false;
+//console.log('VAR=' + prop + ', OK=' + ok);
+				}
+			}
+			
+			if (!ok_start ) {nt_params[tw].ntypewrite.start  = 0.0;}
+			if (!ok_end   ) {nt_params[tw].ntypewrite.end    = 1.0;}
+			if (!ok_stx   ) {nt_params[tw].ntypewrite.stx    = 3;}
+			if (!ok_etx   ) {nt_params[tw].ntypewrite.etx    = 3;}
+			
+			nt_params[nt].ntypewrite.start *= 1;	// Convert from string to number
+			nt_params[nt].ntypewrite.end   *= 1;	// Convert from string to number
+			nt_params[nt].ntypewrite.stx   *= 1;	// Convert from string to number
+			nt_params[nt].ntypewrite.etx   *= 1;	// Convert from string to number
+console.log('format_ntypewriter_data(ntypewriters[nt], nt_params[nt]);');						
+			format_ntypewriter_data(ntypewriters[nt], nt_params[nt]);
+			
+//console.log('DEBUG: typewriters=' + JSON.stringify(typewriters[tw], null, 4));
+			
+            params[np++] = {ntypewrite: ntypewriters[nt], nt_params: nt_params[nt]};
 //console.log(params[np-1]);
         }
 		
@@ -2719,7 +3765,7 @@ console.log('DEBUG: json='+ json);
 
 // Now process any stopwatches.
 
-        for (sw = 0; sw < stopwatches.length; sw++) {
+    for (sw = 0; sw < stopwatches.length; sw++) {
             data_stopwatch = stopwatches[sw].getAttribute("data-stopwatch");
 			if (data_stopwatch === "") {
 				json = "{}";
@@ -2773,6 +3819,9 @@ console.log('DEBUG: json='+ json);
 			}
             params[np++] = {stopwatch: stopwatches[sw], sw_params: sw_params[sw]};
 		}
+				
+				
+				
 
         var producer = new Producer(params);
         
@@ -2799,7 +3848,6 @@ console.log('DEBUG: json='+ json);
             Elusien.delay      = 1000/Elusien.frame_rate;       /* length (in msecs) of a frame */
             Elusien.niters     = duration*Elusien.frame_rate;   /* total number of frames in the clip */
             webvfx = {
-						
                         readyRender : function(torf){   
                             var timeout_loop = function(){
                                 setTimeout(function(){

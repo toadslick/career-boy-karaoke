@@ -10,6 +10,24 @@ html {
   position: relative;
 }
 
+#kara-image-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.kara-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  opacity: 0;
+}
+
 #kara-group-container {
   position: absolute;
   left: 0;
@@ -31,7 +49,7 @@ html {
 }
 
 .kara-newline {
-  height: 20px;
+  height: 10px;
   overflow: hidden;
 }
 
@@ -41,16 +59,17 @@ html {
 }
 
 .kara-text {
-  color: rgb(70, 150, 230);
-  text-shadow: 3px 3px 10px #000;
+  color: #eee;
+  text-shadow: 3px 3px 10px #000, 3px 3px 10px #000, 3px 3px 20px #000;
 }
 
 .kara-text-highlight {
-  color: yellow;
+  color: #f3f;
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   overflow: hidden;
   width: 0;
+  text-shadow: 0 0 2px #f3f, 0 0 2px #f3f, 0 0 2px #f3f;
 }

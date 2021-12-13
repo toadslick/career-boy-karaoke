@@ -4,6 +4,7 @@
   var ACTIVE_GROUP_CLASS_NAME = "kara-active";
   var SEGMENT_CLASS_NAME = "kara-segment";
   var NEWLINE_CLASS_NAME = "kara-newline";
+  var IMAGE_CLASS_NAME = "kara-image";
 
   var NEWLINE = "\n";
 
@@ -11,6 +12,7 @@
   var OFFSET = window.songData.offset;
 
   var groupContainer = document.getElementById("kara-group-container");
+  var imageContainer = document.getElementById("kara-image-container");
 
   function creategroupNode() {
     var node = document.createElement("div");
@@ -38,6 +40,17 @@
     return node;
   }
 
+  function createImageNode(index) {
+    var node = document.createElement("div");
+    node.classList.add(IMAGE_CLASS_NAME);
+    node.style.setProperty(
+      "background-image",
+      "url(../images/" + index + ".png)"
+    );
+    imageContainer.appendChild(node);
+    return node;
+  }
+
   function percentElapsed(start, end, songTime) {
     var duration = end - start;
     var elapsed = songTime - start;
@@ -45,10 +58,10 @@
   }
 
   function animateSegmentGroup(group, songTime) {
-    var percentTop = percentElapsed(group.start - 5, group.end + 20, songTime);
+    var percentTop = percentElapsed(group.start - 10, group.end + 20, songTime);
     var percentOpacity = percentElapsed(
-      group.start - 3,
-      group.end + 1,
+      group.start - 5,
+      group.end + 2,
       songTime
     );
     group.node.style.setProperty("top", 100 - percentTop * 200 + "vh");
@@ -64,6 +77,14 @@
       "width",
       percent * 100 + "%"
     );
+  }
+
+  function animateImage(image, songTime) {
+    var fadeDuration = 2;
+    var fadeStart = image.start - fadeDuration;
+    var fadeEnd = image.start;
+    var percent = percentElapsed(fadeStart, fadeEnd, songTime);
+    image.node.style.setProperty("opacity", percent);
   }
 
   var totalDuration = 0;
@@ -90,6 +111,13 @@
     segmentGroups.push(segmentGroup);
   });
 
+  var images = window.songData.images.map(function (startTime, index) {
+    return {
+      start: startTime,
+      node: createImageNode(index),
+    };
+  });
+
   var runLoop = function (time, browser, currentFrame, frameRate) {
     var currentSongTime = currentFrame / frameRate + OFFSET;
     segmentGroups.forEach(function (group) {
@@ -97,6 +125,9 @@
       group.segments.forEach(function (segment) {
         animateSegment(segment, currentSongTime);
       });
+    });
+    images.forEach(function (image) {
+      animateImage(image, currentSongTime);
     });
   };
 

@@ -6,6 +6,7 @@
   window.songData = {
     bpm: 120,
     offset: 0.1,
+    images: [0, 48, 80, 111, 144, 177],
     lyrics: [
       [
         [2.5, PAUSE],
